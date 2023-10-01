@@ -1,0 +1,16 @@
+{
+  "events" : {
+    "choice_event" : [
+      {
+        "id" : 0,
+        "event_name" : "Le kiki de tout les kiki",
+        "options" : {
+
+        }
+      }
+    ]
+  },
+  "event_types": [
+    "choice_event"
+  ]
+}
