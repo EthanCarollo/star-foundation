@@ -12,7 +12,7 @@ class DataManager
   end
 
   def load_event_data
-    file = File.open "./ressources/event_data.json"
+    file = File.open "./resources/event_data.json"
     json = JSON.load file
     @event_data = json["events"]
     @event_type_data = json["event_types"]
