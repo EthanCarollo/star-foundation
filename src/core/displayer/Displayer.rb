@@ -23,7 +23,7 @@ class Displayer
   def self.display_event_choice(event)
     Curses.clear
     Curses.cbreak
-    Curses.echo
+    Curses.noecho
     # Set the color pair set in the init_color_pair method
     Curses.attron(Curses.color_pair(1) | Curses::A_BOLD)
 
@@ -47,7 +47,7 @@ class Displayer
       if event.selected == index
         Curses.setpos(((Curses.lines) / 2 +index - event.options.length+1), (Curses.cols - option.get_text.length-4) / 2)
         Curses.attron(Curses.color_pair(2) | Curses::A_BOLD)
-        Curses.addstr("=>#{option.get_text}<=\n")
+        Curses.addstr("=>#{option.get_text}\n")
         Curses.attroff(Curses.color_pair(2) | Curses::A_BOLD)
       else
         Curses.setpos(((Curses.lines) / 2 +index - event.options.length+1), (Curses.cols - option.get_text.length) / 2)
@@ -56,13 +56,14 @@ class Displayer
     end
 
     Curses.refresh
-
-    case Curses.getch
+    input = Curses.getch
+    print(input)
+    case input
       when Curses::KEY_DOWN
         event.selected = (event.selected + 1) % event.options.length
       when Curses::KEY_UP
         event.selected = (event.selected - 1) % event.options.length
-      when Curses::KEY_ENTER
+      when Curses::KEY_RIGHT
         event.options[event.selected].select
     end
     # Take the input of the user

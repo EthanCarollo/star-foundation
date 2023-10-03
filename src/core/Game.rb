@@ -44,7 +44,7 @@ class Game
     Displayer.init_color_pair
 
     Curses.attron(Curses.color_pair(1) | Curses::A_BOLD)
-    text = "Welcome in Star Foundation";
+    text = "Bienvenue dans Star Foundation"
     Curses.setpos(Curses.lines / 2, (Curses.cols - text.length) / 2)
     Displayer.display_progressively_text(text)
     sleep(1.5)

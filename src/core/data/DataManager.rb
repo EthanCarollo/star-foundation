@@ -16,7 +16,5 @@ class DataManager
     json = JSON.load file
     @event_data = json["events"]
     @event_type_data = json["event_types"]
-    print(@event_data)
-    print(@event_type_data)
   end
 end
