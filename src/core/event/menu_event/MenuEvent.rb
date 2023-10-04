@@ -6,6 +6,8 @@ require './src/core/displayer/Displayer.rb'
 # The menu event is the event used to show the menu, in fact, it's just a choice event with presset options
 class MenuEvent < ChoiceEvent
 
+  attr_accessor :character_values
+
   def initialize(_event_name)
     super(_event_name)
     @options = [
@@ -22,6 +24,14 @@ class MenuEvent < ChoiceEvent
       )
     ]
     @selected = 0
+  end
+
+  def add_value(key)
+
+  end
+
+  def pull_value(key)
+
   end
 
 end
