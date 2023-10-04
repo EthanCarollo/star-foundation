@@ -1,0 +1,25 @@
+{
+  "start": {
+    "event_type": "story",
+    "text": "Vous vous reveillé dans un bar, avec devant vous une demi-douzaine de choppe vide, vous avez très mal à la tête. Vous vou rappelez alors de l'histoire de la veille...",
+    "next": "introduction"
+  },
+  "introduction": {
+    "event_type": "choice_event",
+    "text": "On vous à volé votre vaisseau !",
+    "choice": {
+      "Tapez sur la table.": "bar_reaction",
+      "Ne rien faire.": "first_question_introduction"
+    }
+  },
+  "first_question_introduction": {
+    "event_type": "story",
+    "text": "...",
+    "next": "..."
+  },
+  "bar_reaction": {
+    "event_type": "story",
+    "text": "Le barman et les clients se tourne vers vous...",
+    "next": "first_question_introduction"
+  }
+}
