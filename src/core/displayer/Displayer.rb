@@ -1,3 +1,5 @@
+require "./src/core/input/InputManager.rb"
+
 
 # This class will just display text
 class Displayer
@@ -5,6 +7,7 @@ class Displayer
     text.chars.each do |char|
       Curses.addch(char)
       Curses.refresh
+      InputManager.block_input
       sleep(0.05) # Délai en secondes pour l'effet de ralenti
     end
   end
@@ -30,9 +33,9 @@ class Displayer
     Curses.setpos(((Curses.lines) / 2 - event.options.length), (Curses.cols - event.event_name.length) / 2)
     # Set progressively the event name before show the option
     if(event.event_displayed == false)
-      Curses.nocbreak
       self.display_progressively_text(event.event_name)
       sleep(1)
+      InputManager.block_input
       event.event_displayed = true
     end
 
@@ -55,15 +58,15 @@ class Displayer
       end
     end
 
+    InputManager.unblock_input
     Curses.refresh
     input = Curses.getch
-    print(input)
     case input
       when Curses::KEY_DOWN
         event.selected = (event.selected + 1) % event.options.length
       when Curses::KEY_UP
         event.selected = (event.selected - 1) % event.options.length
-      when Curses::KEY_RIGHT
+      when Curses::KEY_RIGHT, 10
         event.options[event.selected].select
     end
     # Take the input of the user
