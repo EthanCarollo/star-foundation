@@ -1,25 +1,195 @@
 {
-  "start": {
-    "event_type": "story",
-    "text": "Vous vous reveillé dans un bar, avec devant vous une demi-douzaine de choppe vide, vous avez très mal à la tête. Vous vou rappelez alors de l'histoire de la veille...",
-    "next": "introduction"
-  },
-  "introduction": {
-    "event_type": "choice_event",
-    "text": "On vous à volé votre vaisseau !",
-    "choice": {
-      "Tapez sur la table.": "bar_reaction",
-      "Ne rien faire.": "first_question_introduction"
+  "events": [
+    {
+      "id": 0,
+      "event_type": "story",
+      "text": "Vous vous réveiller dans un bar, avec devant vous une demi-douzaine de choppe galactic vide et un énorme mal de crane. C’est alors que vous vous rappelez de l'histoire de la veille…",
+      "next": 1
+    },
+    {
+      "id": 1,
+      "event_type": "choice",
+      "text": "Vous vous rappelez alors que l’on vous à VOLEZ VOTRE VAISSEAU !!!",
+      "choice": {
+        "Taper sur la table": 2,
+        "Ne Rien Faire ": 3
+      }
+    },
+    {
+      "id": 2,
+      "event_type": "story",
+      "text": "'Vous tapez sur la table…'\nLe barman et les autre clients se retourne vers vous puis retourne à leurs occupation quelque secondes après.",
+      "next": 3
+    },
+    {
+      "id": 3,
+      "event_type": "story",
+      "text": "Vous vous rappelez de tout… La trahison de votre équipage, les menaces… Mais par dessus tout, vous vous rappelez qu’ils ont manger vos Beignets ! Et ca c’est irréprochable",
+      "next": 4
+    },
+    {
+      "id": 4,
+      "event_type": "choice",
+      "text": "Vous avez alors une idée en tête… Et si vous partiez à l’aventure pour retrouver votre vaisseau ?",
+      "choice": {
+        "Boire une bière": 5,
+        "Partir à l’aventure": 9
+      }
+    },
+    {
+      "id": 5,
+      "event_type": "choice",
+      "text": "Vous êtes sur ?",
+      "choice": {
+        "Partir à l’aventure": 9,
+        "Boire une bière": 6
+      }
+    },
+    {
+      "id": 6,
+      "event_type": "choice",
+      "text": "Vous êtes sur ?",
+      "choice": {
+        "Partir à l’aventure": 9,
+        "Boire une bière": 7
+      }
+    },
+    {
+      "id": 7,
+      "event_type": "choice",
+      "text": "Vous êtes sur ?",
+      "choice": {
+        "Partir à l’aventure": 9,
+        "Boire une bière": 8
+      }
+    },
+    {
+      "id": 8,
+      "event_type": "story",
+      "text": "Bon d’accord un dernière mais après on pars à l’aventure.",
+      "next": 9
+    },
+    {
+      "id": 9,
+      "event_type": "story",
+      "text": "Vous vous trouver à Nova Prime, votre vaisseau se situe dans le Cratère Éclatant pour vous y rendre vous aller devoir passer par la rivière bleu et le chemin des Nébuleuses. Cette aventure risque de ne pas être de tout repos. Heureusement pour toi, il te reste quelque jetons de compétences amasser lors de tes dernières aventure. Utilise les à bonne escient.",
+      "next": "statsCustomisation"
+    },
+    {
+      "id": 10,
+      "event_type": "story",
+      "text": "Après avoir réparti vos dernières compétences vous vous diriger vers la rivière bleu.",
+      "next": 11
+    },
+    {
+      "id": 11,
+      "event_type": "choice",
+      "text": "Sur la route vous tomber nez à nez avec une Aqualithe Brillante.",
+      "choice": {
+        "L’attaquer": "figthAqualithe",
+        "Fuir": "escapeAqualithe"
+      }
+    },
+    {
+      "id": 12,
+      "event_type": "story",
+      "text": "Vous n’avez pas réussi à fuir et devez combattre l’Aqualithe Brillante.",
+      "next": "figthAqualithe"
+    },
+    {
+      "id": 13,
+      "event_type": "story",
+      "text": "Vous avez réussi à fuir et continuer votre route.",
+      "next": 15
+    },
+    {
+      "id": 14,
+      "event_type": "story",
+      "text": "Après ce léger imprévu vous continuer votre route.",
+      "next": 15
+    },
+    {
+      "id": 15,
+      "event_type": "choice",
+      "text": "Après avoir contourner la rivière bleu tu rencontre un marchant qui te propose de jouer à un jeu en échange d’un boost de tes compétences.",
+      "choice": {
+        "Accepter": 17,
+        "Refuser": 16
+      }
+    },
+    {
+      "id": 16,
+      "event_type": "choice",
+      "text": "Tu es sur ? C’est un offre qui ne se refuse pas ?",
+      "choice": {
+        "Accepter": 17
+      }
+    },
+    {
+      "id": 17,
+      "event_type": "story",
+      "text": "Après ce léger imprévu vous continuer votre route.",
+      "next": "diceGame"
+    },
+    {
+      "id": 18,
+      "event_type": "story",
+      "text": "Quelle chance, tu as Gagné ! Tu vois tes compétences augmenté de 25%",
+      "next": 20
+    },
+    {
+      "id": 19,
+      "event_type": "story",
+      "text": "C’est dommage, tu aurais peut-être plus de chance la prochaine fois.",
+      "next": 20
+    },
+    {
+      "id": 20,
+      "event_type": "story",
+      "text": "Après ce petit moment de détente te voilà reparti à l’aventure, tu approche alors du chemin des Nébuleuses.",
+      "next": 21
+    },
+    {
+      "id": 21,
+      "event_type": "choice",
+      "text": "Au bout de quelques minutes de marche tu aperçoit au loin une Nébuleuse, cette dernière te bloque la route. Elle t’informe que pour passer tu devras résoudre sont énigmes. Est-tu prêt ?",
+      "choice": {
+        "Oui": 22
+      }
+    },
+    {
+      "id": 22,
+      "event_type": "choice",
+      "text": "'Je suis une étoile lointaine, brillant dans l'infini cosmique. On dit que je guide les âmes perdues vers la lumière. Qui suis-je ?'",
+      "choice": {
+        "L’étoiles du Nord": 23,
+        "La connaissances universelle": 24,
+        "L’espoir": 25
+      }
+    },
+    {
+      "id": 23,
+      "event_type": "story",
+      "text": "L'étoile du Nord :'Oui, vous avez trouvé la voie des étoiles, un phare dans la vaste obscurité. Votre choix est juste.'",
+      "next": 26
+    },
+    {
+      "id": 24,
+      "event_type": "story",
+      "text": "La connaissance universelle : 'Vous percevez la profondeur de l'univers. La connaissance est en effet une lumière qui éclaire le chemin des âmes perdues. Votre choix est juste.'",
+      "next": 26
+    },
+    {
+      "id": 25,
+      "event_type": "story",
+      "text": "L'espoir : 'Vous avez trouvé la lumière intérieure qui guide et console. L'espoir est une étoile lointaine qui brille dans l'infini cosmique. Votre choix est juste.'",
+      "next": 26
+    },
+    {
+      "id": 26,
+      "event_type": "story",
+      "text": "Tu as donc réussi à résoudre l’énigme de la Nébuleuse. Tu peux donc continuer ton chemin jusqu’au Cratère Éclatant.",
+      "next": 27
     }
-  },
-  "first_question_introduction": {
-    "event_type": "story",
-    "text": "...",
-    "next": "..."
-  },
-  "bar_reaction": {
-    "event_type": "story",
-    "text": "Le barman et les clients se tourne vers vous...",
-    "next": "first_question_introduction"
-  }
+  ]
 }
