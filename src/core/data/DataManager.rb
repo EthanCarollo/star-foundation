@@ -8,7 +8,7 @@ class DataManager
 
   # On create, load the event data
   def initialize
-    load_event_data
+    # load_event_data
   end
 
   def load_event_data
