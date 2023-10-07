@@ -28,7 +28,7 @@ class CharacterStatsEvent < ChoiceEvent
 
   def update
     # This is the main boucle of the game
-    Displayer.display_event_personnalisation(self)
+    Displayer.display_event_choice(self)
   end
 
 

@@ -13,4 +13,29 @@ class InputManager
     Curses.timeout = -1
   end
 
+
+  def self.input_event_choice(event)
+    input = Curses.getch
+    case input
+    when Curses::KEY_DOWN
+      event.selected = (event.selected + 1) % event.options.length
+    when Curses::KEY_UP
+      event.selected = (event.selected - 1) % event.options.length
+    when Curses::KEY_RIGHT, 10
+      # Some refactoring is needed here
+      if(event.options[event.selected].instance_of?(OptionSlider))
+        event.options[event.selected].select(1)
+      else
+        event.options[event.selected].select
+      end
+    when Curses::KEY_LEFT
+      # Some refactoring is needed here
+      if(event.options[event.selected].instance_of?(OptionSlider))
+        event.options[event.selected].select(-1)
+      else
+        event.options[event.selected].select
+      end
+    end
+  end
+
 end
