@@ -1,5 +1,6 @@
 require "./src/core/input/InputManager.rb"
 require './src/core/event/option/OptionSlider.rb'
+require './src/core/event/character_event/CharacterStatsEvent.rb'
 require './src/core/event/option/Option.rb'
 
 
@@ -15,9 +16,9 @@ class Displayer
   # color: int (the more time, we will use the static property from the displayer class)
   # x_position: int
   # y_position: int
-  def self.display_progressively_text(text, color = 0, x_position = Curses.lines / 2, y_position = (Curses.cols - text.length) / 2, end_sleep_value = 1)
+  def self.display_progressively_text(text, color = 0, y_position = Curses.lines / 2, x_position = (Curses.cols - text.length) / 2, end_sleep_value = 1)
     Curses.attron(Curses.color_pair(color) | Curses::A_BOLD)
-    Curses.setpos(x_position, y_position)
+    Curses.setpos(y_position, x_position)
     text.chars.each do |char|
       Curses.addch(char)
       Curses.refresh
@@ -51,18 +52,24 @@ class Displayer
     Curses.noecho
 
 
-    x_position_event_name = (Curses.lines) / 2 - event.options.length
-    y_position_event_name = (Curses.cols - event.event_name.length) / 2
+    y_position_event_name = (Curses.lines) / 2 - event.options.length
+    x_position_event_name = (Curses.cols - event.event_name.length) / 2
 
     # Launce once the text progressively
     if(event.event_displayed == false)
-      self.display_progressively_text(event.event_name, @color_red, x_position_event_name, y_position_event_name)
+      self.display_progressively_text(event.event_name, @color_red, y_position_event_name, x_position_event_name)
       event.event_displayed = true
     end
 
     Curses.clear
+    # Display the the point_to_set text of the event if it is a character stats event
+    if event.instance_of?(CharacterStatsEvent)
+      point_to_set_text = "Il vous reste #{event.point_to_set} points à attribuer"
+      x_position_event_point = (Curses.cols - point_to_set_text.length) / 2
+      display_text(point_to_set_text, @color_red, y_position_event_name-1, x_position_event_point)
+    end
     # Display normally the text at the same position
-    display_text(event.event_name, @color_red, x_position_event_name, y_position_event_name)
+    display_text(event.event_name, @color_red, y_position_event_name, x_position_event_name)
 
     # Show the options
     self.display_options(event)

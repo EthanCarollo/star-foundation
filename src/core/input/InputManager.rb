@@ -24,14 +24,14 @@ class InputManager
     when Curses::KEY_RIGHT, 10
       # Some refactoring is needed here
       if(event.options[event.selected].instance_of?(OptionSlider))
-        event.options[event.selected].select(1)
+        event.update_slider(event.options[event.selected].option_val_identifier, 1)
       else
         event.options[event.selected].select
       end
     when Curses::KEY_LEFT
       # Some refactoring is needed here
       if(event.options[event.selected].instance_of?(OptionSlider))
-        event.options[event.selected].select(-1)
+        event.update_slider(event.options[event.selected].option_val_identifier, -1)
       else
         event.options[event.selected].select
       end
