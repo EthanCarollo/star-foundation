@@ -10,8 +10,8 @@ require "./src/core/displayer/Displayer.rb"
 class Game
   @@instance
 
-  @play_view
-  @menu_view
+  attr_accessor :play_view
+  attr_accessor :menu_view
   # The actual view called every update ticks
   @actual_view
 

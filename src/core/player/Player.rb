@@ -1,7 +1,7 @@
 require './src/core/player/PlayerStats.rb'
 
 class Player
-  @stats
+  attr_accessor :stats
 
   def initialize
     @stats = PlayerStats.new

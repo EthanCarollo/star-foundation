@@ -1,6 +1,7 @@
 require './src/core/event/ChoiceEvent.rb'
 require './src/core/event/option/OptionSlider.rb'
 require './src/core/event/option/Option.rb'
+require './src/core/Game.rb'
 
 class CharacterStatsEvent < ChoiceEvent
   attr_accessor :character_values
@@ -46,6 +47,14 @@ class CharacterStatsEvent < ChoiceEvent
     # This is the function called when we select the option to go to the next event
     # so in this function we need to set the player stats with the points attribued
     # to options and go next event rapidly
+    if point_to_set <= 0
+      @options.each do |option|
+        if option.instance_of?(OptionSlider)
+          Game.instance.play_view.player.stats.set_stat(option.option_val_identifier, option.option_val)
+        end
+      end
+    end
+    Game.instance.play_view.go_next_event
   end
 
 end

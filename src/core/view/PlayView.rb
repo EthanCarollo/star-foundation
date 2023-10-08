@@ -8,8 +8,10 @@ require "./src/core/event/character_event/CharacterStatsEvent.rb"
 class PlayView < View
 
   @actual_event
+  attr_accessor :player
 
   def initialize
+    @player = Player.new
     @actual_event = CharacterStatsEvent.new("Choisissez les statistiques de votre personnage.")
   end
 
@@ -18,6 +20,6 @@ class PlayView < View
   end
 
   def go_next_event
-
+    # Go next event logic here
   end
 end
