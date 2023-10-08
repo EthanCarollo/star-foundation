@@ -1,0 +1,26 @@
+<save_data>
+    <character>
+        <stats>
+            <stat>
+                <name>intelligence</name>
+                <value>0</value>
+            </stat>
+            <stat>
+                <name>force</name>
+                <value>0</value>
+            </stat>
+            <stat>
+                <name>agilite</name>
+                <value>0</value>
+            </stat>
+            <stat>
+                <name>chance</name>
+                <value>0</value>
+            </stat>
+        </stats>
+    </character>
+    <events>
+        <current_event "id"="0"></current_event>
+        <events_history></events_history>
+    </events> 
+</save_data>
