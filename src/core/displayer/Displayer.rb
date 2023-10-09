@@ -19,8 +19,8 @@ class Displayer
   def self.display_progressively_text(text, color = 0, y_position = Curses.lines / 2, x_position = (Curses.cols - text.length) / 2, end_sleep_value = 1)
     Curses.attron(Curses.color_pair(color) | Curses::A_BOLD)
     Curses.setpos(y_position, x_position)
-    text.chars.reverse.each do |char|
-      Curses.addch(char)
+    text.chars.each do |char|
+      Curses.addstr(char)
       Curses.refresh
       InputManager.block_input
       sleep(0.05) # Délai en secondes pour l'effet de ralenti
