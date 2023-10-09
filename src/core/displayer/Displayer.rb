@@ -16,14 +16,21 @@ class Displayer
   # color: int (the more time, we will use the static property from the displayer class)
   # x_position: int
   # y_position: int
-  def self.display_progressively_text(text, color = 0, y_position = Curses.lines / 2, x_position = (Curses.cols - text.length) / 2, end_sleep_value = 1)
+  def self.display_progressively_text(text, color = 0, y_position = Curses.lines / 2, x_position = (Curses.cols - text.length) / 2, end_sleep_value = 1, sleep_value = 0.05)
     Curses.attron(Curses.color_pair(color) | Curses::A_BOLD)
     Curses.setpos(y_position, x_position)
+    start_y = Curses.stdscr.cury + 0
+    text_display = ""
     text.chars.each do |char|
+      text_display += char
       Curses.addstr(char)
       Curses.refresh
+      if start_y < Curses.stdscr.cury
+        start_y = Curses.stdscr.cury
+        Curses.setpos(start_y, [(Curses.cols - (text.length - text_display.length)) / 2, 0].max)
+      end
       InputManager.block_input
-      sleep(0.05) # Délai en secondes pour l'effet de ralenti
+      sleep(sleep_value) # Délai en secondes pour l'effet de ralenti
     end
     sleep(end_sleep_value)
     Curses.attroff(Curses.color_pair(color) | Curses::A_BOLD)
@@ -58,10 +65,7 @@ class Displayer
   # x_position: int
   # y_position: int
   def self.display_text(text, color=0, x_position = Curses.lines / 2, y_position = (Curses.cols - text.length) / 2)
-    Curses.attron(Curses.color_pair(color) | Curses::A_BOLD)
-    Curses.setpos(x_position, y_position)
-    Curses.addstr(text)
-    Curses.attroff(Curses.color_pair(color) | Curses::A_BOLD)
+    self.display_progressively_text(text, color, x_position, y_position, 0, 0)
   end
 
 
@@ -71,18 +75,18 @@ class Displayer
     Curses.noecho
 
 
-    y_position_event_name = (Curses.lines) / 2
-    x_position_event_name = (Curses.cols - event.event_name.length) / 2
+    y_position_event = (Curses.lines) / 2 - 2
+    x_position_event = [(Curses.cols - event.event_name.length) / 2, 0].max
 
     # Launce once the text progressively
     if(event.event_displayed == false)
-      self.display_progressively_text(event.event_name, @color_red, y_position_event_name, x_position_event_name)
+      self.display_progressively_text(event.event_name, @color_red, y_position_event, x_position_event)
       event.event_displayed = true
     end
 
     Curses.clear
 
-    display_text(event.event_name, @color_red, y_position_event_name, x_position_event_name)
+    self.display_text(event.event_name, @color_red, y_position_event, x_position_event)
 
     InputManager.unblock_input
     InputManager.input_event_story(event)
