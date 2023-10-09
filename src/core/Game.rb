@@ -44,7 +44,7 @@ class Game
     Displayer.init_color_pair
 
     text = "Bienvenue dans Star Foundation"
-    Displayer.display_progressively_text(text, 1)
+    Displayer.display_progressively_text_reverse(text, 1)
 
     while @game_is_running
       update

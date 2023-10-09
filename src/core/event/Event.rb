@@ -1,4 +1,4 @@
-# This Event represent the story Event so it will be used like it
+# This class is the abstract class of event
 class Event
   attr_accessor :event_name
   attr_accessor :event_displayed
@@ -15,6 +15,7 @@ class Event
     raise("Event constructor has been called which isn't possible normally cause it's used like abstract class")
   end
 
+  # Function called every frame (like a draw fun)
   def update
     raise("Cannot update an abstract Event")
   end

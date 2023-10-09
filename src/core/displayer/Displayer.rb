@@ -19,8 +19,28 @@ class Displayer
   def self.display_progressively_text(text, color = 0, y_position = Curses.lines / 2, x_position = (Curses.cols - text.length) / 2, end_sleep_value = 1)
     Curses.attron(Curses.color_pair(color) | Curses::A_BOLD)
     Curses.setpos(y_position, x_position)
-    text.chars.each do |char|
+    text.chars.reverse.each do |char|
       Curses.addch(char)
+      Curses.refresh
+      InputManager.block_input
+      sleep(0.05) # Délai en secondes pour l'effet de ralenti
+    end
+    sleep(end_sleep_value)
+    Curses.attroff(Curses.color_pair(color) | Curses::A_BOLD)
+    InputManager.block_input
+  end
+
+  # This function display the text progressively with a end time (this function shouldn't be called in a boucle)
+  # The position is the position where we start to write the text
+  # text: string
+  # color: int (the more time, we will use the static property from the displayer class)
+  # x_position: int
+  # y_position: int
+  def self.display_progressively_text_reverse(text, color = 0, y_position = Curses.lines / 2, x_position = (Curses.cols - text.length) / 2, end_sleep_value = 1)
+    Curses.attron(Curses.color_pair(color) | Curses::A_BOLD)
+    Curses.setpos(y_position, x_position)
+    text.chars.reverse.each do |char|
+      Curses.insch(char)
       Curses.refresh
       InputManager.block_input
       sleep(0.05) # Délai en secondes pour l'effet de ralenti
