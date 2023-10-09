@@ -13,6 +13,13 @@ class InputManager
     Curses.timeout = -1
   end
 
+  def self.input_event_story(event)
+    input = Curses.getch
+    case input
+      when Curses::KEY_RIGHT, 10
+      event.skip_story_event
+    end
+  end
 
   def self.input_event_choice(event)
     input = Curses.getch

@@ -45,6 +45,30 @@ class Displayer
   end
 
 
+  def self.display_event_story(event)
+    Curses.clear
+    Curses.cbreak
+    Curses.noecho
+
+
+    y_position_event_name = (Curses.lines) / 2
+    x_position_event_name = (Curses.cols - event.event_name.length) / 2
+
+    # Launce once the text progressively
+    if(event.event_displayed == false)
+      self.display_progressively_text(event.event_name, @color_red, y_position_event_name, x_position_event_name)
+      event.event_displayed = true
+    end
+
+    Curses.clear
+
+    display_text(event.event_name, @color_red, y_position_event_name, x_position_event_name)
+
+    InputManager.unblock_input
+    InputManager.input_event_story(event)
+  end
+
+
   # This function is used for the display of the event with multiple choice (so a ChoiceEvent)
   def self.display_event_choice(event)
     Curses.clear

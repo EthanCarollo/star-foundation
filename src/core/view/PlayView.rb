@@ -4,6 +4,9 @@ require "./src/core/Game.rb"
 require "./src/core/player/Player.rb"
 require "./src/core/displayer/Displayer.rb"
 require "./src/core/event/character_event/CharacterStatsEvent.rb"
+require "./src/core/event/ChoiceEvent.rb"
+require "./src/core/event/StoryEvent.rb"
+require "./src/core/data/DataManager.rb"
 
 class PlayView < View
 
@@ -19,7 +22,14 @@ class PlayView < View
     @actual_event.update
   end
 
-  def go_next_event
+  def go_next_event(id_event)
+    @next_event = DataManager.event_data[id_event]
+    case @next_event["event_type"]
+      when "story"
+      @actual_event = StoryEvent.new(@next_event["text"], @next_event)
+      when "choice"
+      @actual_event = ChoiceEvent.new(@next_event["text"], @next_event)
+    end
     # Go next event logic here
   end
 end

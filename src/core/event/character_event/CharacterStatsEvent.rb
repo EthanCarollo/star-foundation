@@ -54,7 +54,8 @@ class CharacterStatsEvent < ChoiceEvent
         end
       end
     end
-    Game.instance.play_view.go_next_event
+    # Continue the story with the next event who is 0 in this case
+    Game.instance.play_view.go_next_event(0)
   end
 
 end
