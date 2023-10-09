@@ -65,6 +65,13 @@ class Displayer
   # x_position: int
   # y_position: int
   def self.display_text(text, color=0, x_position = Curses.lines / 2, y_position = (Curses.cols - text.length) / 2)
+    Curses.attron(Curses.color_pair(color) | Curses::A_BOLD)
+    Curses.setpos(x_position, y_position)
+    Curses.addstr(text)
+    Curses.attroff(Curses.color_pair(color) | Curses::A_BOLD)
+  end
+
+  def self.display_text_story(text, color=0, x_position = Curses.lines / 2, y_position = (Curses.cols - text.length) / 2)
     self.display_progressively_text(text, color, x_position, y_position, 0, 0)
   end
 
@@ -86,7 +93,7 @@ class Displayer
 
     Curses.clear
 
-    self.display_text(event.event_name, @color_red, y_position_event, x_position_event)
+    self.display_text_story(event.event_name, @color_red, y_position_event, x_position_event)
 
     InputManager.unblock_input
     InputManager.input_event_story(event)
