@@ -6,7 +6,7 @@ require './src/core/Game.rb'
 class CharacterStatsEvent < ChoiceEvent
   attr_accessor :character_values
   attr_accessor :point_to_set
-  def initialize(_event_name)
+  def initialize(_event_name, event)
     super(_event_name)
     @options = [
       OptionSlider.new(
@@ -28,6 +28,7 @@ class CharacterStatsEvent < ChoiceEvent
     ]
     @point_to_set = 10
     @selected = 0
+    @next_event_id = event["next_event_id"]
   end
 
   def update
@@ -55,7 +56,7 @@ class CharacterStatsEvent < ChoiceEvent
       end
     end
     # Continue the story with the next event who is 0 in this case
-    Game.instance.play_view.go_next_event(0)
+    Game.instance.play_view.go_next_event(@next_event_id)
   end
 
 end

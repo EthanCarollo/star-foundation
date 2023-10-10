@@ -15,7 +15,10 @@ class PlayView < View
 
   def initialize
     @player = Player.new
-    @actual_event = CharacterStatsEvent.new("Choisissez les statistiques de votre personnage.")
+  end
+
+  def initialize_view
+    go_next_event(0)
   end
 
   def update
@@ -25,10 +28,12 @@ class PlayView < View
   def go_next_event(id_event)
     @next_event = DataManager.event_data[id_event]
     case @next_event["event_type"]
-      when "story"
+    when "story"
       @actual_event = StoryEvent.new(@next_event["text"], @next_event)
-      when "choice"
+    when "choice"
       @actual_event = ChoiceEvent.new(@next_event["text"], @next_event)
+    when "story_stats_personalisation"
+      @actual_event = CharacterStatsEvent.new("Choisissez les statistiques de votre personnage.", @next_event)
     end
     # Go next event logic here
   end

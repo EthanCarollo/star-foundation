@@ -60,6 +60,7 @@ class Game
   end
 
   def load_game_view
+    @play_view.initialize_view
     @actual_view = @play_view
   end
 
