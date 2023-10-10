@@ -2,6 +2,7 @@ require "./src/core/input/InputManager.rb"
 require './src/core/event/option/OptionSlider.rb'
 require './src/core/event/character_event/CharacterStatsEvent.rb'
 require './src/core/event/option/Option.rb'
+require './src/core/Game.rb'
 
 
 # This class will just display text
@@ -142,21 +143,46 @@ class Displayer
     Curses.clear
     Curses.cbreak
     Curses.noecho
+    self.display_event(event)
+    InputManager.unblock_input
+    InputManager.input_event_story(event)
+  end
 
+  def self.display_event_dice(event)
+    Curses.clear
+    Curses.cbreak
+    Curses.noecho
+
+    self.display_event(event)
+
+    y_position_event = Curses.lines / 2 + 2
+
+    if event.dice_launched == false
+      for i in 0...30
+        self.display_text("Résultat : " + event.get_dice_value.to_s, @color_red, y_position_event)
+        sleep(0.05)
+      end
+      event.dice_launched = true
+      event.result = event.get_dice_value
+    end
+
+    self.display_text("Résultat : " + event.result.to_s, @color_red, y_position_event)
+
+    InputManager.unblock_input
+    InputManager.input_event_dice(event)
+  end
+
+  def self.display_event(event)
     y_position_event = (Curses.lines) / 2 - 2
 
     # Launce once the text progressively
     if event.event_displayed == false
       self.display_cutted_text(event.event_name, @color_red, y_position_event, 0, 0.05)
       event.event_displayed = true
+      Curses.clear
     end
 
-    Curses.clear
-
     self.display_cutted_text(event.event_name, @color_red, y_position_event)
-
-    InputManager.unblock_input
-    InputManager.input_event_story(event)
   end
 
 
@@ -212,7 +238,13 @@ class Displayer
         end
         option_val_text += "] "
       end
+
       option_text = option_val_text+option.get_text
+
+      if option.instance_of?(OptionDice)
+        option_text += " (#{option.option_val_identifier} : #{option.value_needed} | actual : #{Game.instance.play_view.player.stats.get_stat(option.option_val_identifier)})"
+      end
+
       y_position_option = (Curses.lines) / 2 + index - event.options.length + 2 + cut_text_length
 
       if event.selected == index

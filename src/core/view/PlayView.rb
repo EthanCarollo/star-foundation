@@ -6,6 +6,8 @@ require "./src/core/displayer/Displayer.rb"
 require "./src/core/event/character_event/CharacterStatsEvent.rb"
 require "./src/core/event/ChoiceEvent.rb"
 require "./src/core/event/StoryEvent.rb"
+require "./src/core/event/dice_event/DiceChoiceEvent.rb"
+require "./src/core/event/dice_event/DiceEvent.rb"
 require "./src/core/data/DataManager.rb"
 
 class PlayView < View
@@ -33,8 +35,14 @@ class PlayView < View
     when "choice"
       @actual_event = ChoiceEvent.new(@next_event["text"], @next_event)
     when "story_stats_personalisation"
-      @actual_event = CharacterStatsEvent.new("Choisissez les statistiques de votre personnage.", @next_event)
+      @actual_event = CharacterStatsEvent.new(@next_event["text"], @next_event)
+    when "dice_game"
+      @actual_event = DiceChoiceEvent.new(@next_event["text"], @next_event)
     end
     # Go next event logic here
+  end
+
+  def go_dice_event(dice_information)
+    @actual_event = DiceEvent.new(dice_information)
   end
 end

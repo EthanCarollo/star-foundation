@@ -14,8 +14,8 @@ class PlayerStats
     @chance       = 0
   end
 
-  def set_stats_on_event
-
+  def get_stat(ability_identifier)
+    self.instance_variable_get("@#{ability_identifier}")
   end
 
   def set_stat(ability_identifier, value)

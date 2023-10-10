@@ -1,3 +1,5 @@
+require './src/core/Game.rb'
+
 class InputManager
 
   # The function block the input just set the time out of getting the input to 0
@@ -11,6 +13,18 @@ class InputManager
   # will block the program again.
   def self.unblock_input
     Curses.timeout = -1
+  end
+
+  def self.input_event_dice(event)
+    input = Curses.getch
+    case input
+    when Curses::KEY_RIGHT, 10
+      if event.result >= event.val_needed
+        Game.instance.play_view.go_next_event(event.win_event_id)
+      else
+        Game.instance.play_view.go_next_event(event.loose_event_id)
+      end
+    end
   end
 
   def self.input_event_story(event)

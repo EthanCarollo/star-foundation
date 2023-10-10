@@ -10,16 +10,16 @@ class CharacterStatsEvent < ChoiceEvent
     super(_event_name)
     @options = [
       OptionSlider.new(
-        "Intelligence", 10
+        "Intelligence", 6
       ),
       OptionSlider.new(
-        "Force", 10
+        "Force", 6
       ),
       OptionSlider.new(
-        "Agilite", 10
+        "Agilite", 6
       ),
       OptionSlider.new(
-        "Chance", 10
+        "Chance", 6
       ),
       Option.new(
         "Suivant",
