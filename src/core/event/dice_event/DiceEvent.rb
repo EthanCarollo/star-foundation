@@ -10,12 +10,13 @@ class DiceEvent < Event
   attr_accessor :loose_event_id
 
   def initialize(dice_selected)
-    event_name = "Tu as donc voulu te battre contre cette sacré Aqualithe"
     @dice_launched = false
     @ability_needed = dice_selected["ability_needed"]
     @val_needed = dice_selected["dice_needed"]
     @loose_event_id = dice_selected["lose_event_id"]
     @win_event_id = dice_selected["next_event_id"]
+
+    event_name = dice_selected["long_text"]
     super(event_name, nil)
   end
 
@@ -36,7 +37,7 @@ class DiceEvent < Event
 
   def get_dice_value
     # Define the range of numbers
-    min_value = 0
+    min_value = Game.instance.play_view.player.stats.get_stat(@ability_needed)
     max_value = 6
 
     # Generate a random number between min_value and max_value

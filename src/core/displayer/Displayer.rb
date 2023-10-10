@@ -242,7 +242,7 @@ class Displayer
       option_text = option_val_text+option.get_text
 
       if option.instance_of?(OptionDice)
-        option_text += " (#{option.option_val_identifier} : #{option.value_needed} | actual : #{Game.instance.play_view.player.stats.get_stat(option.option_val_identifier)})"
+        option_text += " (#{option.option_val_identifier} : #{option.value_needed} | actuel : #{Game.instance.play_view.player.stats.get_stat(option.option_val_identifier)})"
       end
 
       y_position_option = (Curses.lines) / 2 + index - event.options.length + 2 + cut_text_length
