@@ -34,35 +34,29 @@ class Displayer
   # color: int (the more time, we will use the static property from the displayer class)
   # x_position: int
   # y_position: int
-  def self.display_progressively_text(text, color = 0, y_position = Curses.lines / 2, x_position = (Curses.cols - text.length) / 2, end_sleep_value = 1, sleep_value = 0.05)
+  def self.display_progressively_text(text, color = 0, y_position = Curses.lines / 2, end_sleep_value = 1, sleep_value = 0.05)
     Curses.attron(Curses.color_pair(color) | Curses::A_BOLD)
-    Curses.setpos(y_position, x_position)
+    Curses.setpos(y_position, (Curses.cols - text.length) / 2)
     start_y = Curses.stdscr.cury + 0
     text_display = ""
     if sleep_value > 0
       text.chars.each do |char|
-        text_display += char
         Curses.addstr(char)
         Curses.refresh
-
-        #if start_y < Curses.stdscr.cury
-        # raise("There is a line break on the displayed progressively which is not possible normally.")
-        #end
         InputManager.block_input
         sleep(sleep_value) # Délai en secondes pour l'effet de ralenti
       end
+      sleep(end_sleep_value)
     else
       Curses.addstr(text)
     end
-    sleep(end_sleep_value)
     Curses.attroff(Curses.color_pair(color) | Curses::A_BOLD)
     InputManager.block_input
   end
 
   def self.display_progressively_cutted_text(cutted_text, color, y_start_position, end_sleep_value = 1, sleep_value = 0.05)
     for i in 0...cutted_text.length
-      x_position = (Curses.cols - cutted_text[i].length) / 2
-      self.display_progressively_text(cutted_text[i], color, y_start_position+i, x_position, end_sleep_value, sleep_value)
+      self.display_progressively_text(cutted_text[i], color, y_start_position+i, end_sleep_value, sleep_value)
     end
   end
 
@@ -92,11 +86,10 @@ class Displayer
   # color: int (the more time, we will use the static property from the displayer class)
   # x_position: int
   # y_position: int
-  def self.display_text(text, color=0, y_position = Curses.lines / 2, x_position = (Curses.cols - text.length) / 2)
-    Curses.attron(Curses.color_pair(color) | Curses::A_BOLD)
-    Curses.setpos(y_position, x_position)
-    Curses.addstr(text)
-    Curses.attroff(Curses.color_pair(color) | Curses::A_BOLD)
+  def self.display_text(text, color=0, y_position = Curses.lines / 2, end_sleep = 0, sleep = 0)
+    # Cut the text in multiple part
+    ct_text = self.cut_text_on_size(text)
+    self.display_progressively_cutted_text(ct_text, color, y_position, end_sleep, sleep)
   end
 
   def self.display_cutted_text(text, color=0, y_position = Curses.lines / 2, end_sleep = 0, sleep = 0)
@@ -144,6 +137,7 @@ class Displayer
   # ============ Region 4: Event Functions ============
   # These are events functions or methods used in the code called on every frames by events.
 
+  # This function is used by the StoryEvent to display it
   def self.display_event_story(event)
     Curses.clear
     Curses.cbreak
@@ -152,7 +146,7 @@ class Displayer
     y_position_event = (Curses.lines) / 2 - 2
 
     # Launce once the text progressively
-    if(event.event_displayed == false)
+    if event.event_displayed == false
       self.display_cutted_text(event.event_name, @color_red, y_position_event, 0, 0.05)
       event.event_displayed = true
     end
@@ -176,7 +170,7 @@ class Displayer
     y_position_event_name = (Curses.lines) / 2 - event.options.length
 
     # Launce once the text progressively
-    if(event.event_displayed == false)
+    if event.event_displayed == false
       self.display_cutted_text(event.event_name, @color_red, y_position_event_name, 1, 0.05)
       event.event_displayed = true
     end
@@ -186,7 +180,7 @@ class Displayer
     if event.instance_of?(CharacterStatsEvent)
       point_to_set_text = "Il vous reste #{event.point_to_set} points à attribuer"
       x_position_event_point = (Curses.cols - point_to_set_text.length) / 2
-      display_text(point_to_set_text, @color_red, y_position_event_name-1, x_position_event_point)
+      display_text(point_to_set_text, @color_red, y_position_event_name-1)
     end
     # Display normally the text at the same position
     self.display_cutted_text(event.event_name, @color_red, y_position_event_name)
@@ -209,6 +203,7 @@ class Displayer
 
     event.options.each_with_index do |option, index|
       option_val_text = ""
+      # Creating a slider if it is an OptionSlider
       if option.instance_of?(OptionSlider)
         option_value = option.option_val
         option_val_text = option.option_val.to_s + " ["
@@ -218,27 +213,22 @@ class Displayer
         option_val_text += "] "
       end
       option_text = option_val_text+option.get_text
+      y_position_option = (Curses.lines) / 2 + index - event.options.length + 2 + cut_text_length
 
       if event.selected == index
         Curses.attron(Curses.color_pair(2) | Curses::A_BOLD)
         if option.instance_of?(OptionSlider)
           # Display option slider
           option_text = "=> "+option_text
-          x_position_option = (Curses.lines) / 2 + index - event.options.length + 2 + cut_text_length
-          y_position_option = (Curses.cols - option_text.length-3) / 2
-          self.display_text(option_text, @color_white, x_position_option, y_position_option)
+          self.display_text(option_text, @color_white, y_position_option)
         else
           # Display option
           option_text = "=>"+option_text+"<="
-          x_position_option = (Curses.lines) / 2 + index - event.options.length + 2 + cut_text_length
-          y_position_option = (Curses.cols - option_text.length) / 2
-          self.display_text(option_text, @color_white, x_position_option, y_position_option)
+          self.display_text(option_text, @color_white, y_position_option)
         end
         Curses.attroff(Curses.color_pair(2) | Curses::A_BOLD)
       else
-        x_position_option = (Curses.lines) / 2 + index - event.options.length + 2 + cut_text_length
-        y_position_option = (Curses.cols - option_text.length) / 2
-        self.display_text(option_text, @color_white, x_position_option, y_position_option)
+        self.display_text(option_text, @color_white, y_position_option)
       end
     end
 
