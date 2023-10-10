@@ -117,11 +117,19 @@
       "text": "Sur la route vous tomber nez à nez avec une Aqualithe Brillante.",
       "choice": [
         {
-          "long_text" :"Vous avez décidé de vous battre contre l'Aqualithe.",
           "text": "L’attaquer",
+          "long_text" :"Vous avez décidé de vous battre contre l'Aqualithe Brillante.",
           "ability_needed": "force",
           "dice_needed": 5,
           "next_event_id": 14,
+          "lose_event_id": 12
+        },
+        {
+          "text": "Fuir",
+          "long_text" :"Vous avez décidé de fuir l'Aqualithe Brillante.",
+          "ability_needed": "chance",
+          "dice_needed": 9,
+          "next_event_id": 13,
           "lose_event_id": 12
         }
       ]
@@ -133,6 +141,12 @@
       "next_event_id": 14
     },
     {
+      "id" : 13,
+      "event_type": "story",
+      "text": "Vous avez réussi à fuir et continuer votre chemain.",
+      "next_event_id": 15
+    },
+    {
       "id": 14,
       "event_type": "story",
       "text": "Après ce léger imprévu vous continuer votre route.",
@@ -140,11 +154,11 @@
     },
     {
       "id": 15,
-      "event_type": "choice",
+      "event_type": "dice_game",
       "text": "Après avoir contourner la rivière bleu tu rencontre un marchant qui te propose de jouer à un jeu en échange d’un boost de tes compétences.",
       "choice": [
         {
-          "text": "Accepter",
+          "text": "Accepter (Une offre comme celle-ci ne se refuse pas)",
           "ability_needed": "chance",
           "dice_needed": 12,
           "next_event_id": 18,
@@ -176,7 +190,7 @@
       "text": "Au bout de quelques minutes de marche tu aperçoit au loin une Nébuleuse, cette dernière te bloque la route. Elle t’informe que pour passer tu devras résoudre sont énigmes. Est-tu prêt ?",
       "choice": [
         {
-          "text": "Oui",
+          "text": "Oui (En même temps pas trop le choix).",
           "next_event_id": 22
         }
       ]
