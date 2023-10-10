@@ -117,6 +117,7 @@
       "text": "Sur la route vous tomber nez à nez avec une Aqualithe Brillante.",
       "choice": [
         {
+          "long_text" :"Vous avez décidé de vous battre contre l'Aqualithe.",
           "text": "L’attaquer",
           "ability_needed": "force",
           "dice_needed": 5,
@@ -130,12 +131,6 @@
       "event_type": "story",
       "text": "Vous n'avez pas réussi à tomber sur le nombre nécéssaire.",
       "next_event_id": 14
-    },
-    {
-      "id": 13,
-      "event_type": "story",
-      "text": "Vous avez réussi à fuir et continuer votre route.",
-      "next_event_id": 15
     },
     {
       "id": 14,
