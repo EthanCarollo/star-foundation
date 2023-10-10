@@ -28,6 +28,7 @@ class Game
     @actual_view = @menu_view
 
     DataManager.init_data
+    DataManager.save_game_data
   end
 
   def self.instance

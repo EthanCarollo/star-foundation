@@ -1,26 +1,24 @@
+<?xml version="1.0"?>
 <save_data>
     <character>
         <stats>
             <stat>
-                <name>intelligence</name>
+                <name>caca</name>
                 <value>0</value>
             </stat>
             <stat>
-                <name>force</name>
+                <name>caca</name>
                 <value>0</value>
             </stat>
             <stat>
-                <name>agilite</name>
+                <name>caca</name>
                 <value>0</value>
             </stat>
             <stat>
-                <name>chance</name>
+                <name>caca</name>
                 <value>0</value>
             </stat>
         </stats>
     </character>
-    <events>
-        <current_event id="0"></current_event>
-        <events_history></events_history>
-    </events> 
+    <events>Nouveau contenu pour l'&#xE9;l&#xE9;ment 1</events> 
 </save_data>
