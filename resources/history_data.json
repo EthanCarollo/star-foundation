@@ -158,6 +158,7 @@
       "text": "Après avoir contourner la rivière bleu tu rencontre un marchant qui te propose de jouer à un jeu en échange d’un boost de tes compétences.",
       "choice": [
         {
+          "long_text" :"C'est l'heure de jouer ! Croisez les doigt pour gagner !",
           "text": "Accepter (Une offre comme celle-ci ne se refuse pas)",
           "ability_needed": "chance",
           "dice_needed": 12,
