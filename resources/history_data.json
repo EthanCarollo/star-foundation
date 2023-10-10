@@ -113,24 +113,22 @@
     },
     {
       "id": 11,
-      "event_type": "choice_figth_aqualithe",
+      "event_type": "dice_game",
       "text": "Sur la route vous tomber nez à nez avec une Aqualithe Brillante.",
       "choice": [
         {
           "text": "L’attaquer",
-          "next_event_id": 14
-        },
-        {
-          "Fuir": "Fuir",
-          "next_event_id_win": 13,
-          "next_event_id_lose": "//! 12 -> 13"
+          "ability_needed": "force",
+          "dice_needed": 5,
+          "next_event_id": 14,
+          "lose_event_id": 12
         }
       ]
     },
     {
       "id": 12,
-      "event_type": "story_figth_aqualithe",
-      "text": "Vous n’avez pas réussi à fuir et devez combattre l’Aqualithe Brillante.",
+      "event_type": "story",
+      "text": "Vous n'avez pas réussi à tomber sur le nombre nécéssaire.",
       "next_event_id": 14
     },
     {
@@ -152,31 +150,12 @@
       "choice": [
         {
           "text": "Accepter",
-          "next_event_id": 17
-        },
-        {
-          "text": "Refuser",
-          "next_event_id": 16
+          "ability_needed": "chance",
+          "dice_needed": 12,
+          "next_event_id": 18,
+          "lose_event_id": 19
         }
       ]
-    },
-    {
-      "id": 16,
-      "event_type": "choice",
-      "text": "Tu es sur ? C’est un offre qui ne se refuse pas ?",
-      "choice": [
-        {
-          "text": "Accepter",
-          "next_event_id": 17
-        }
-      ]
-    },
-    {
-      "id": 17,
-      "event_type": "story_dice_game",
-      "text": "Après ce léger imprévu vous continuer votre route.",
-      "next_event_id_win": 18,
-      "next_event_id_lose": 19
     },
     {
       "id": 18,
