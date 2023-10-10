@@ -10,6 +10,24 @@ class Displayer
   @@color_red
   @@color_white
 
+  # ============ Region 1: Initialization Functions ============
+  # These are initialization functions or methods used in the code.
+
+  # This function will initialize the pair of color
+  def self.init_color_pair
+    @color_red = 1
+    @color_white = 2
+    Curses.start_color
+    # The pair 1 is for something that is agressive
+    Curses.init_pair(@color_red, Curses::COLOR_RED, Curses::COLOR_BLACK)
+    # The pair 2 is for the selected text
+    Curses.init_pair(@color_white, 248, Curses::COLOR_BLACK)
+  end
+
+
+  # ============ Region 2: Draw Functions ============
+  # These are draw functions or methods used in the code.
+
   # This function display the text progressively with a end time (this function shouldn't be called in a boucle)
   # The position is the position where we start to write the text
   # text: string
@@ -21,20 +39,31 @@ class Displayer
     Curses.setpos(y_position, x_position)
     start_y = Curses.stdscr.cury + 0
     text_display = ""
-    text.chars.each do |char|
-      text_display += char
-      Curses.addstr(char)
-      Curses.refresh
-      if start_y < Curses.stdscr.cury
-        start_y = Curses.stdscr.cury
-        Curses.setpos(start_y, [(Curses.cols - (text.length - text_display.length)) / 2, 0].max)
+    if sleep_value > 0
+      text.chars.each do |char|
+        text_display += char
+        Curses.addstr(char)
+        Curses.refresh
+
+        #if start_y < Curses.stdscr.cury
+        # raise("There is a line break on the displayed progressively which is not possible normally.")
+        #end
+        InputManager.block_input
+        sleep(sleep_value) # Délai en secondes pour l'effet de ralenti
       end
-      InputManager.block_input
-      sleep(sleep_value) # Délai en secondes pour l'effet de ralenti
+    else
+      Curses.addstr(text)
     end
     sleep(end_sleep_value)
     Curses.attroff(Curses.color_pair(color) | Curses::A_BOLD)
     InputManager.block_input
+  end
+
+  def self.display_progressively_cutted_text(cutted_text, color, y_start_position, end_sleep_value = 1, sleep_value = 0.05)
+    for i in 0...cutted_text.length
+      x_position = (Curses.cols - cutted_text[i].length) / 2
+      self.display_progressively_text(cutted_text[i], color, y_start_position+i, x_position, end_sleep_value, sleep_value)
+    end
   end
 
   # This function display the text progressively with a end time (this function shouldn't be called in a boucle)
@@ -57,43 +86,80 @@ class Displayer
     InputManager.block_input
   end
 
-
   # This function will just display a text :( (this function can be called in a boucle)
   # The position is the position where we start to write the text
   # text: string
   # color: int (the more time, we will use the static property from the displayer class)
   # x_position: int
   # y_position: int
-  def self.display_text(text, color=0, x_position = Curses.lines / 2, y_position = (Curses.cols - text.length) / 2)
+  def self.display_text(text, color=0, y_position = Curses.lines / 2, x_position = (Curses.cols - text.length) / 2)
     Curses.attron(Curses.color_pair(color) | Curses::A_BOLD)
-    Curses.setpos(x_position, y_position)
+    Curses.setpos(y_position, x_position)
     Curses.addstr(text)
     Curses.attroff(Curses.color_pair(color) | Curses::A_BOLD)
   end
 
-  def self.display_text_story(text, color=0, x_position = Curses.lines / 2, y_position = (Curses.cols - text.length) / 2)
-    self.display_progressively_text(text, color, x_position, y_position, 0, 0)
+  def self.display_cutted_text(text, color=0, y_position = Curses.lines / 2, end_sleep = 0, sleep = 0)
+    # Cut the text in multiple part
+    ct_text = self.cut_text_on_size(text)
+    self.display_progressively_cutted_text(ct_text, color, y_position, end_sleep, sleep)
   end
 
+
+  # ============ Region 3: Helper Functions ============
+  # These are helper functions or methods used in the code.
+
+  def self.cut_text_on_size(text)
+    # Cut the text in multiple parts and create an array, in this case, we can have a good Text presentation
+    # In this function, i have the final array and the potential word to test
+    new_texts = [""]
+    potential_word = ""
+    for i in 0...text.length
+      char = text[i]
+
+      # Check for the line break character
+      if char =~ /\n/
+        new_texts[new_texts.length - 1] += potential_word
+        potential_word = ""
+        new_texts.push("")
+        next
+      end
+
+      # If the actual string in the array is superior to the width of the Window, then, we create another
+      if (potential_word.length + new_texts[new_texts.length - 1].length) > Curses.cols
+        new_texts[new_texts.length - 1].slice!(-1)
+        new_texts.push("")
+      end
+      potential_word += char
+      if char == " "
+        new_texts[new_texts.length - 1] += potential_word
+        potential_word = ""
+      end
+    end
+    new_texts[new_texts.length - 1] += potential_word
+    return  new_texts
+  end
+
+
+  # ============ Region 4: Event Functions ============
+  # These are events functions or methods used in the code called on every frames by events.
 
   def self.display_event_story(event)
     Curses.clear
     Curses.cbreak
     Curses.noecho
 
-
     y_position_event = (Curses.lines) / 2 - 2
-    x_position_event = [(Curses.cols - event.event_name.length) / 2, 0].max
 
     # Launce once the text progressively
     if(event.event_displayed == false)
-      self.display_progressively_text(event.event_name, @color_red, y_position_event, x_position_event)
+      self.display_cutted_text(event.event_name, @color_red, y_position_event, 0, 0.05)
       event.event_displayed = true
     end
 
     Curses.clear
 
-    self.display_text_story(event.event_name, @color_red, y_position_event, x_position_event)
+    self.display_cutted_text(event.event_name, @color_red, y_position_event)
 
     InputManager.unblock_input
     InputManager.input_event_story(event)
@@ -108,11 +174,10 @@ class Displayer
 
 
     y_position_event_name = (Curses.lines) / 2 - event.options.length
-    x_position_event_name = (Curses.cols - event.event_name.length) / 2
 
     # Launce once the text progressively
     if(event.event_displayed == false)
-      self.display_progressively_text(event.event_name, @color_red, y_position_event_name, x_position_event_name)
+      self.display_cutted_text(event.event_name, @color_red, y_position_event_name, 1, 0.05)
       event.event_displayed = true
     end
 
@@ -124,7 +189,7 @@ class Displayer
       display_text(point_to_set_text, @color_red, y_position_event_name-1, x_position_event_point)
     end
     # Display normally the text at the same position
-    display_text(event.event_name, @color_red, y_position_event_name, x_position_event_name)
+    self.display_cutted_text(event.event_name, @color_red, y_position_event_name)
 
     # Show the options
     self.display_options(event)
@@ -139,6 +204,9 @@ class Displayer
 
   # This option is set to just display the options
   def self.display_options(event)
+    # Check size of the cut text length
+    cut_text_length = cut_text_on_size(event.event_name).length-1
+
     event.options.each_with_index do |option, index|
       option_val_text = ""
       if option.instance_of?(OptionSlider)
@@ -156,19 +224,19 @@ class Displayer
         if option.instance_of?(OptionSlider)
           # Display option slider
           option_text = "=> "+option_text
-          x_position_option = (Curses.lines) / 2 + index - event.options.length + 2
+          x_position_option = (Curses.lines) / 2 + index - event.options.length + 2 + cut_text_length
           y_position_option = (Curses.cols - option_text.length-3) / 2
           self.display_text(option_text, @color_white, x_position_option, y_position_option)
         else
           # Display option
           option_text = "=>"+option_text+"<="
-          x_position_option = (Curses.lines) / 2 + index - event.options.length + 2
+          x_position_option = (Curses.lines) / 2 + index - event.options.length + 2 + cut_text_length
           y_position_option = (Curses.cols - option_text.length) / 2
           self.display_text(option_text, @color_white, x_position_option, y_position_option)
         end
         Curses.attroff(Curses.color_pair(2) | Curses::A_BOLD)
       else
-        x_position_option = (Curses.lines) / 2 + index - event.options.length + 2
+        x_position_option = (Curses.lines) / 2 + index - event.options.length + 2 + cut_text_length
         y_position_option = (Curses.cols - option_text.length) / 2
         self.display_text(option_text, @color_white, x_position_option, y_position_option)
       end
@@ -177,15 +245,6 @@ class Displayer
   end
 
 
-  # This function will initialize the pair of color
-  def self.init_color_pair
-    @color_red = 1
-    @color_white = 2
-    Curses.start_color
-    # The pair 1 is for something that is agressive
-    Curses.init_pair(@color_red, Curses::COLOR_RED, Curses::COLOR_BLACK)
-    # The pair 2 is for the selected text
-    Curses.init_pair(@color_white, 248, Curses::COLOR_BLACK)
-  end
+  # ============ End of Regions ============
 
 end
