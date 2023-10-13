@@ -20,5 +20,8 @@
             </stat>
         </stats>
     </character>
-    <events>Nouveau contenu pour l'&#xE9;l&#xE9;ment 1</events> 
+    <events>
+        <current_event id="10"/>
+        <events_history/>
+    </events> 
 </save_data>

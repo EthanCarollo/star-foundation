@@ -14,7 +14,8 @@ class MenuEvent < ChoiceEvent
         lambda { || Game.instance.load_game_view }
       ),
       Option.new(
-        "Reprendre le jeu"
+        "Reprendre le jeu",
+        lambda { || Game.instance.load_save_game }
       ),
       Option.new(
         "Quitter le jeu",

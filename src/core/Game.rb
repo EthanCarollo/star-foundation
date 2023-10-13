@@ -28,7 +28,6 @@ class Game
     @actual_view = @menu_view
 
     DataManager.init_data
-    DataManager.save_game_data
   end
 
   def self.instance
@@ -62,6 +61,11 @@ class Game
 
   def load_game_view
     @play_view.initialize_view
+    @actual_view = @play_view
+  end
+
+  def load_save_game
+    @play_view.initialize_save
     @actual_view = @play_view
   end
 

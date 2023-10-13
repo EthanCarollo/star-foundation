@@ -2,11 +2,15 @@
 class Event
   attr_accessor :event_name
   attr_accessor :event_displayed
+  attr_accessor :event_id
+  attr_accessor :type
 
   def initialize(_event_name, _event_data = nil)
     @event_name = _event_name
     @event_displayed = false
     if _event_data != nil
+      @type = _event_data["event_type"]
+      @event_id = _event_data["id"]
       initialize_event_data(_event_data)
     end
   end

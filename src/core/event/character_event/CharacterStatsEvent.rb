@@ -28,6 +28,7 @@ class CharacterStatsEvent < ChoiceEvent
     ]
     @point_to_set = 10
     @selected = 0
+    @event_id = event["id"]
     @next_event_id = event["next_event_id"]
   end
 
