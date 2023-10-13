@@ -1,6 +1,6 @@
 require 'json'
 require 'nokogiri'
-
+require './src/core/Game.rb'
 class DataManager
 
   # Data from the game
@@ -37,14 +37,13 @@ class DataManager
   end
 
   # Save the player stats in the xml doc
-  def save_player_stats(doc)
+  def self.save_player_stats(doc)
     # The player save stats function
     stats = doc.css("stats/stat")
 
+    # Go in every stat of the save and save them from the player stats
     stats.each do |stat|
-      # stat.at('name').content = "caca"
-      # print(stat.at('name'))
-      # print(stat.at('value'))
+      stat.at('value').content = Game.instance.play_view.player.stats.get_stat(stat.at('name').content)
     end
   end
 end

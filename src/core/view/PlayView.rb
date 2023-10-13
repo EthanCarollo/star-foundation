@@ -40,6 +40,7 @@ class PlayView < View
       @actual_event = DiceChoiceEvent.new(@next_event["text"], @next_event)
     end
     # Go next event logic here
+    DataManager.save_game_data
   end
 
   def go_dice_event(dice_information)

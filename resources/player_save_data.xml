@@ -3,19 +3,19 @@
     <character>
         <stats>
             <stat>
-                <name>caca</name>
+                <name>intelligence</name>
                 <value>0</value>
             </stat>
             <stat>
-                <name>caca</name>
+                <name>force</name>
                 <value>0</value>
             </stat>
             <stat>
-                <name>caca</name>
+                <name>agilite</name>
                 <value>0</value>
             </stat>
             <stat>
-                <name>caca</name>
+                <name>chance</name>
                 <value>0</value>
             </stat>
         </stats>
