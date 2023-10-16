@@ -121,7 +121,7 @@
           "long_text": "Vous avez décidé de vous battre contre 'l'Aqualithe Brillante'.",
           "ability_needed": "force",
           "dice_needed": 5,
-          "next_event_id": 14,
+          "next_event_id": 98,
           "lose_event_id": 12
         },
         {
@@ -162,7 +162,7 @@
           "text": "Accepter (Une offre comme celle-ci ne se refuse pas)",
           "ability_needed": "chance",
           "dice_needed": 12,
-          "next_event_id": 18,
+          "next_event_id": 99,
           "lose_event_id": 19
         }
       ]
@@ -170,7 +170,7 @@
     {
       "id": 18,
       "event_type": "story",
-      "text": "Quelle chance, tu as gagné ! Tu vois tes compétences augmenter de 25%",
+      "text": "Quelle chance, tu as gagné ! Et en plus tu vois tes compétences augmenter de 25%",
       "next_event_id": 20
     },
     {
@@ -238,6 +238,106 @@
       "event_type": "story",
       "text": "Tu as donc réussi à résoudre l'énigme de la 'Nébuleuse'. Tu peux donc continuer ton chemin jusqu'au cratère du 'Star Foundation'.",
       "next_event_id": 27
+    },
+    {
+      "id": 27,
+      "event_type": "story",
+      "text": "Vous arrivez devant votre vaisseau, prêt à reprendre le contrôle. Cependant, quelque chose vous surprend lorsque vous ouvrez la porte.\nVotre équipage est bien là, mais il semble différent...",
+      "next_event_id": 28
+    },
+    {
+      "id": 28,
+      "event_type": "dice_game",
+      "text": "À peine avez-vous eu le temps de comprendre qu'il s'agissait d'un imposteur ayant pris la place de votre équipage que vous vous faites attaquer.",
+      "choice": [
+        {
+          "text": "Riposter",
+          "long_text": "Vous avez décidé de riposter face à l'attaque de votre 'équipage'.",
+          "ability_needed": "agilite",
+          "dice_needed": 7,
+          "next_event_id": 29,
+          "lose_event_id": 30
+        },
+        {
+          "text": "Essayer une nouvelle attaque",
+          "long_text": "Vous avez décidé de tenter une nouvelle attaque, celle-ci nécessite de l'agilité.",
+          "ability_needed": "agilite",
+          "dice_needed": 10,
+          "next_event_id": 29,
+          "lose_event_id": 30
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "event_type": "reward",
+      "next_event_id": 31
+    },
+    {
+      "id": 30,
+      "event_type": "story",
+      "text": "Malheureusement, votre attaque a échoué et vous devez vous rendre.",
+      "next_event_id": 32
+    },
+    {
+      "id": 32,
+      "event_type": "end_game",
+      "text": "Après de nombreuses heures de tortures, vous finissez par succomber.\nMalgré tout, vous avez pu retrouver votre vaisseau et êtes mort à ses côtés. Comme un vrai pirate galactique."
+    },
+    {
+      "id": 31,
+      "event_type": "reward",
+      "text": "Vous avez réussi à battre une vague d'ennemis. Plus que quelques-uns et votre vaisseau sera de nouveau à vous.",
+      "next_event_id": 33
+    },
+    {
+      "id": 33,
+      "event_type": "dice_game",
+      "text": "Vous voilà à nouveau face à des ennemis.",
+      "choice": [
+        {
+          "text": "Attaquer",
+          "long_text": "Vous avez décidé d'attaquer les ennemis restants avec votre meilleur coup.",
+          "ability_needed": "force",
+          "dice_needed": 1,
+          "next_event_id": 34,
+          "lose_event_id": 30
+        },
+        {
+          "text": "Essayer une nouvelle attaque",
+          "long_text": "Vous avez décidé de tenter une nouvelle attaque, celle-ci nécessite de la force.",
+          "ability_needed": "force",
+          "dice_needed": 2,
+          "next_event_id": 34,
+          "lose_event_id": 30
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "event_type": "reward",
+      "next_event_id": 35
+    },
+    {
+      "id": 35,
+      "event_type": "story",
+      "text": "Vous avez réussi à battre tous les ennemis !!! Votre vaisseau est de nouveau à vous.\n'Vous allez ouvrir la porte du frigo.'\nVos beignets intergalactiques sont toujours là !\nMaintenant, allons retrouver ton équipage.",
+      "next_event_id": 36
+    },
+    {
+      "id": 36,
+      "event_type": "end_game",
+      "text": "C'est faux, tu n'iras jamais chercher ton équipage. Tu mangeras tous tes beignets et finiras par retourner au bar du coin où tu boiras 'quelques' bières."
+    },
+    {
+      "id": 98,
+      "event_type": "reward",
+      "next_event_id": 14
+    },
+    {
+      "id": 99,
+      "event_type": "reward",
+      "next_event_id": 18
     }
   ]
 }
