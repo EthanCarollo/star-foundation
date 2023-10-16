@@ -1,10 +1,16 @@
 # Star Foundation
 
+![Image](./images/star_foundation_logo.png)
+
 ## What is Star Foundation ?
 
-Star Foundation is a little RPG cli game for everyone !
+Star Foundation is an RPG game in CLI made with Ruby.
+<br>
+This is based on the principle of books where you are the hero.
 
 ## How to play ?
+
+Firstly you need to download the game using the instructions below, then read the readme explaining how the game works.
 
 ***Download ruby on your machine by using Homebrew :***
 
