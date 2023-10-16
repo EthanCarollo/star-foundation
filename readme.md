@@ -1,4 +1,8 @@
+<center>
+
 # Star Foundation
+
+</center>
 
 ![Image](./images/star_foundation_logo.png)
 
@@ -10,22 +14,27 @@ This is based on the principle of books where you are the hero.
 
 ## How to play ?
 
-Firstly you need to download the game using the instructions below, then read the readme explaining how the game works.
+Firstly you need to download the game using the instructions below, then read the readme [How To Play ?](how_to_play.md)
+explaining how the game works.
 
-***Download ruby on your machine by using Homebrew :***
+**_Download ruby on your machine by using Homebrew :_**
 
 (The version of Ruby for this project is 2.4.20)
+
 ```
 brew install ruby
 ```
+
 Else, if you are on Windows, you can install it here : https://rubyinstaller.org/
 
-***Download all the dependencies***
+**_Download all the dependencies_**
+
 ```
 bundler install
 ```
 
-***Launch the game in a terminal***
+**_Launch the game in a terminal_**
+
 ```
 ruby main.rb
 ```
