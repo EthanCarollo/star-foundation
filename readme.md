@@ -1,6 +1,7 @@
-# Star Foundation
 
-![Project Banner](/assets/logo.png?raw=true "Project Banner")
+<p align="center">Star Foundation</p>
+
+![Image](./images/star_foundation_logo.png)
 
 ## What is Star Foundation ?
 
