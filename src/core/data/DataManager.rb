@@ -1,5 +1,6 @@
 require 'json'
 require 'nokogiri'
+require 'redcarpet'
 require './src/core/Game.rb'
 class DataManager
 
@@ -29,6 +30,7 @@ class DataManager
     save_player_stats(doc)
     save_history_events(doc)
 
+    save_md
     # Enregistrer le document XML mis à jour dans un fichier
     File.open('./resources/player_save_data.xml', 'w') do |file|
       file.puts(doc.to_xml)
@@ -68,6 +70,7 @@ class DataManager
     end
   end
 
+
   def self.get_xml_node_event(doc, event)
     new_event = Nokogiri::XML::Node.new('event', doc)
 
@@ -77,6 +80,49 @@ class DataManager
     new_event << name_event
 
     return new_event
+  end
+
+  def self.save_md
+    File.open('resources/output.md', 'w') do |file|
+      file.write(get_md)
+    end
+  end
+
+  def self.get_md
+    markdown = ""
+    markdown_introduction = <<-MARKDOWN
+# C'était une belle aventure n'est ce pas ?
+    
+Mais malheureusement, c'est terminé...
+    MARKDOWN
+    markdown += markdown_introduction
+    markdown += get_stats_from_xml_to_md
+    markdown += get_history_from_xml_to_md
+
+    return markdown
+  end
+
+  def self.get_stats_from_xml_to_md()
+    doc = Nokogiri::XML(File.open('./resources/player_save_data.xml'))
+    stats = doc.css("stats/stat")
+    md_content = <<-MARKDOWN
+## Vous aviez des superbes statistiques hein ! 
+    MARKDOWN
+    # Go in every stat of the save and save them from the player stats
+    stats.each do |stat|
+      md_content += <<-MARKDOWN
+#### #{stat.at('name').content} : #{stat.at('value').content}
+    MARKDOWN
+    end
+    return md_content
+  end
+
+  def self.get_history_from_xml_to_md()
+    doc = Nokogiri::XML(File.open('./resources/save_data.xml'))
+    md_content = <<-MARKDOWN
+## Et vous avez eu une sacrée aventure...
+    MARKDOWN
+    return md_content
   end
 
   # ============ Region 2: Load Functions ============
@@ -96,5 +142,8 @@ class DataManager
       Game.instance.play_view.player.stats.instance_variable_set("@#{stat.at('name').content}", stat.at('value').content)
     end
   end
+
+  # ============ Region 3: Get Functions ============
+  # These are events functions who load the state of the game from "player_save_data.xml"
 
 end

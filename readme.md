@@ -1,5 +1,7 @@
 # Star Foundation
 
+![Project Banner](/assets/logo.png?raw=true "Project Banner")
+
 ## What is Star Foundation ?
 
 Star Foundation is a little RPG cli game for everyone !

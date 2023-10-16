@@ -37,11 +37,11 @@ class DiceEvent < Event
 
   def get_dice_value
     # Define the range of numbers
-    min_value = Game.instance.play_view.player.stats.get_stat(@ability_needed)
-    max_value = 6
+    min_value = Game.instance.play_view.player.stats.get_stat(@ability_needed)+1
+    max_value = 7
 
     # Generate a random number between min_value and max_value
-    random_number = rand(min_value..max_value)
+    random_number = rand(min_value..max_value)-1
     return random_number
   end
 end
