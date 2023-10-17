@@ -11,7 +11,8 @@ Star Foundation is a little RPG cli game for everyone !
 
 ***Download ruby on your machine by using Homebrew :***
 
-(The version of Ruby for this project is 2.4.20)
+(The version of Ruby for this project is 3.1.4)
+
 ```
 brew install ruby
 ```
