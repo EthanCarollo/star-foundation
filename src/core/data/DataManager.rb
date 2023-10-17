@@ -82,6 +82,15 @@ class DataManager
     return new_event
   end
 
+  def self.get_event_by_id(id)
+    @@event_data.each do |event|
+      if event["id"] == id
+        return event
+      end
+    end
+    raise("There is no event with id : " + id)
+  end
+
   def self.save_md
     File.open('resources/output.md', 'w') do |file|
       file.write(get_md)
@@ -122,6 +131,13 @@ Mais malheureusement, c'est terminé...
     md_content = <<-MARKDOWN
 ## Et vous avez eu une sacrée aventure...
     MARKDOWN
+
+    hist_data = Game.instance.play_view.history_events
+    hist_data.each do |event|
+      md_content += <<-MARKDOWN
+#### #{get_event_by_id(event.event_id)["text"]}
+    MARKDOWN
+    end
     return md_content
   end
 

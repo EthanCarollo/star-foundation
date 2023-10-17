@@ -40,22 +40,32 @@ class PlayView < View
       @history_events.push(@actual_event)
     end
     # And go next event in that way
-    @next_event = DataManager.event_data[id_event]
-    case @next_event["event_type"]
-      when "story"
-        @actual_event = StoryEvent.new(@next_event["text"], @next_event)
-      when "choice"
-        @actual_event = ChoiceEvent.new(@next_event["text"], @next_event)
-      when "story_stats_personalisation"
-        @actual_event = CharacterStatsEvent.new(@next_event["text"], @next_event)
-      when "dice_game"
-        @actual_event = DiceChoiceEvent.new(@next_event["text"], @next_event)
-    end
+    @actual_event = get_event(id_event)
     # Go next event logic here
     DataManager.save_game_data
   end
 
+  def get_event(id_event)
+    @event = DataManager.get_event_by_id(id_event)
+    @event_obj_to_return = nil
+    case @event["event_type"]
+    when "story"
+      @event_obj_to_return = StoryEvent.new(@event["text"], @event)
+    when "choice"
+      @event_obj_to_return = ChoiceEvent.new(@event["text"], @event)
+    when "story_stats_personalisation"
+      @event_obj_to_return = CharacterStatsEvent.new(@event["text"], @event)
+    when "dice_game"
+      @event_obj_to_return = DiceChoiceEvent.new(@event["text"], @event)
+    end
+    return @event_obj_to_return
+  end
+
   def go_dice_event(dice_information)
     @actual_event = DiceEvent.new(dice_information)
+  end
+
+  def history_events
+    @history_events
   end
 end

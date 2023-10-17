@@ -2,8 +2,8 @@
     
 Mais malheureusement, c'est terminé...
 ## Vous aviez des superbes statistiques hein ! 
-#### intelligence : 2
+#### intelligence : 0
 #### force : 0
-#### agilite : 6
-#### chance : 2
+#### agilite : 0
+#### chance : 0
 ## Et vous avez eu une sacrée aventure...

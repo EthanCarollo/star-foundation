@@ -21,7 +21,7 @@
         </stats>
     </character>
     <events>
-        <current_event id="1"/>
-        <events_history><event><id>0</id></event></events_history>
+        <current_event id="0"/>
+        <events_history/>
     </events> 
 </save_data>
