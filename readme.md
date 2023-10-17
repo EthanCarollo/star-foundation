@@ -15,7 +15,7 @@ explaining how the game works.
 
 **_Download ruby on your machine by using Homebrew :_**
 
-(The version of Ruby for this project is 2.4.20)
+(The version of Ruby for this project is 3.1.4)
 
 ```
 brew install ruby
