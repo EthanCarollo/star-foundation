@@ -21,7 +21,7 @@
         </stats>
     </character>
     <events>
-        <current_event id="4"/>
-        <events_history><event><id>0</id></event><event><id>1</id></event><event><id>2</id></event><event><id>3</id></event></events_history>
+        <current_event id="9"/>
+        <events_history><event><id>0</id></event><event><id>1</id></event><event><id>2</id></event><event><id>3</id></event><event><id>4</id></event></events_history>
     </events> 
 </save_data>

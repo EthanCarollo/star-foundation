@@ -146,9 +146,9 @@ Mais malheureusement, c'est terminé...
 
   def self.load_save(play_view)
     doc = Nokogiri::XML(File.open('./resources/player_save_data.xml'))
-    play_view.go_next_event(doc.at('events/current_event')["id"].to_i)
     load_player_stats(doc)
     load_history(doc)
+    play_view.go_next_event(doc.at('events/current_event')["id"].to_i)
   end
 
   def self.load_player_stats(doc)
@@ -161,7 +161,12 @@ Mais malheureusement, c'est terminé...
   end
 
   def self.load_history(doc)
-    stats = doc.css("stats/stat")
+    event_history = doc.css("events/events_history/event")
+    play_view = Game.instance.play_view
+    # Set every events
+    event_history.each do |event|
+      play_view.history_events.push(play_view.get_event(event.at('id').content.to_i))
+    end
   end
 
   # ============ Region 3: Get Functions ============
