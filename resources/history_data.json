@@ -4,12 +4,14 @@
       "id": 0,
       "event_type": "story",
       "text": "Vous vous réveillez dans un bar, avec devant vous une demi-douzaine de chopes galactiques vides.\nAprès une forte douleur à la tête et un léger vertige (sûrement dû à l'alcool), vous vous rappelez de la raison pour laquelle vous aviez décidé de boire…",
+      "recap_text": "Vous vous réveillez dans un bar après avoir consommé plusieurs chopes galactiques.",
       "next_event_id": 1
     },
     {
       "id": 1,
       "event_type": "choice",
       "text": "On vous a VOLÉ VOTRE VAISSEAU !!!",
+      "recap_text": "Vous réalisez que votre vaisseau a été volé.",
       "choice": [
         {
           "text": "'Tapez sur la table'",
@@ -25,18 +27,21 @@
       "id": 2,
       "event_type": "story",
       "text": "'Vous tapez sur la table…'\nLe barman et les autres clients se retournent vers vous, puis retournent à leurs occupations quelques secondes après.",
+      "recap_text": "Vous frappez la table, attirant brièvement l'attention du barman et des clients.",
       "next_event_id": 3
     },
     {
       "id": 3,
       "event_type": "story",
       "text": "Vous vous rappelez de tout...\nVotre équipage qui vous a trahi...\nLes menaces envers vous...\nMais par-dessus tout...\nIls ont osé manger tous les stocks de beignets intergalactiques !!!",
+      "recap_text": "Vous vous souvenez de la trahison de votre équipage et du vol de vos beignets intergalactiques.",
       "next_event_id": 4
     },
     {
       "id": 4,
       "event_type": "choice",
       "text": "C'est alors que vous avez une idée en tête...\nEt si vous partiez retrouver votre vaisseau ?",
+      "recap_text": "Vous envisagez de partir à la recherche de votre vaisseau.",
       "choice": [
         {
           "text": "'Boire une bière'",
@@ -52,6 +57,7 @@
       "id": 5,
       "event_type": "choice",
       "text": "Êtes-vous sûr ?",
+      "recap_text": "Vous hésitez entre boire une bière et partir à l'aventure.",
       "choice": [
         {
           "text": "'Partir à l’aventure'",
@@ -67,6 +73,7 @@
       "id": 6,
       "event_type": "choice",
       "text": "Êtes-vous sûr ?",
+      "recap_text": "Vous hésitez entre boire une bière et partir à l'aventure.",
       "choice": [
         {
           "text": "'Partir à l’aventure'",
@@ -82,6 +89,7 @@
       "id": 7,
       "event_type": "choice",
       "text": "Êtes-vous sûr ?",
+      "recap_text": "Vous hésitez entre boire une bière et partir à l'aventure.",
       "choice": [
         {
           "text": "'Partir à l’aventure'",
@@ -97,24 +105,28 @@
       "id": 8,
       "event_type": "story",
       "text": "Bon d’accord un dernière…\nMais après on pars à l’aventure.",
+      "recap_text": "Vous décidez de boire une dernière bière avant de partir à l'aventure.",
       "next_event_id": 9
     },
     {
       "id": 9,
       "event_type": "story_stats_personalisation",
-      "text": "Vous vous trouvez à la ville de 'Nova Prime'. Votre vaisseau se situe dans le cratère du 'Star Foundation'. Pour vous y rendre, vous allez devoir passer par la 'Rivière Bleue' et le 'Chemin des Nébuleuses'.\nCette aventure risque de ne pas être de tout repos. Heureusement pour toi, il te reste quelques jetons de compétences amassés lors de tes dernières aventures. Utilise-les à bon escient.",
+      "text": "Vous vous trouvez à la ville de 'Nova Prime'. Votre vaisseau se situe dans le cratère du 'Star Foundation'. Pour vous y rendre, vous allez devoir passer par la 'Rivière Bleue' et le 'Chemin des Nébuleuses'.\nCette aventure risque de ne pas être de tout repos. Heureusement pour toi, il te reste quelques jetons de compétences amassés lors de tes dernières aventures. Utilisez-les à bon escient.",
+      "recap_text": "Vous partez à l'aventure. Actuellement, vous êtes à 'Nova Prime' et vous devez récupérer votre vaisseau situé dans le cratère du 'Star Foundation'. Pour y arriver, vous devrez traverser la 'Rivière Bleue' et le 'Chemin des Nébuleuses'. Vous avez quelques jetons de compétences à utiliser.",
       "next_event_id": 10
     },
     {
       "id": 10,
       "event_type": "story",
       "text": "Après avoir réparti vos dernières compétences, vous vous dirigez vers la 'Rivière Bleue'.",
+      "recap_text": "Vous répartissez vos compétences et partez vers la 'Rivière Bleue'.",
       "next_event_id": 11
     },
     {
       "id": 11,
       "event_type": "dice_game",
       "text": "Sur la route, vous tombez nez à nez avec une 'Aqualithe Brillante'.",
+      "recap_text": "En chemin vers la 'Rivière Bleue', vous rencontrez une 'Aqualithe Brillante'.",
       "choice": [
         {
           "text": "'L’attaquer'",
@@ -138,24 +150,28 @@
       "id": 12,
       "event_type": "story",
       "text": "Vous n'avez pas réussi à obtenir le nombre nécessaire pour battre 'l'Aqualithe Brillante'.",
+      "recap_text": "Vous n'avez pas réussi à battre 'l'Aqualithe Brillante'.",
       "next_event_id": 14
     },
     {
       "id": 13,
       "event_type": "story",
       "text": "Vous avez réussi à fuir et continuer votre chemin.",
+      "recap_text": "Vous avez réussi à fuir et poursuivre votre chemin.",
       "next_event_id": 15
     },
     {
       "id": 14,
       "event_type": "story",
       "text": "Après ce léger imprévu, vous continuez votre route.",
+      "recap_text": "Après ce léger imprévu, vous continuez votre route.",
       "next_event_id": 15
     },
     {
       "id": 15,
       "event_type": "dice_game",
       "text": "Après avoir contourné la 'Rivière Bleue', tu rencontres un marchand qui te propose de jouer à un jeu en échange d'un boost de tes compétences.",
+      "recap_text": "Après avoir contourné la 'Rivière Bleue', vous rencontrez un marchand proposant de jouer à un jeu pour améliorer vos compétences.",
       "choice": [
         {
           "long_text": "Vous avez de votre plein gré décidé d'accepter l'offre du marchand et de participer au jeu.",
@@ -171,24 +187,28 @@
       "id": 18,
       "event_type": "story",
       "text": "Quelle chance, tu as gagné ! Et en plus tu vois tes compétences augmenter de 25%",
+      "recap_text": "Vous gagnez le jeu et vos compétences augmentent de 25%.",
       "next_event_id": 20
     },
     {
       "id": 19,
       "event_type": "story",
       "text": "C'est dommage, tu aurais peut-être plus de chance la prochaine fois.",
+      "recap_text": "Vous perdez le jeu mais gardez l'espoir d'avoir plus de chance la prochaine fois.",
       "next_event_id": 20
     },
     {
       "id": 20,
       "event_type": "story",
       "text": "Après ce petit moment de détente, te voilà reparti à l'aventure. Tu approches alors du 'Chemin des Nébuleuses'.",
+      "recap_text": "Après le jeu, vous continuez votre aventure et approchez du 'Chemin des Nébuleuses'.",
       "next_event_id": 21
     },
     {
       "id": 21,
       "event_type": "choice",
       "text": "Au bout de quelques minutes de marche, tu aperçois au loin une 'Nébuleuse'. Cette dernière te bloque la route. Elle t'informe que pour passer, tu devras résoudre ses énigmes. Es-tu prêt ?",
+      "recap_text": "Vous approchez d'une 'Nébuleuse' qui bloque votre route et qui vous propose de résoudre des énigmes pour passer.",
       "choice": [
         {
           "text": "Oui (En même temps, tu n'as pas trop le choix).",
@@ -200,6 +220,7 @@
       "id": 22,
       "event_type": "choice",
       "text": "'Je suis une étoile lointaine, brillant dans l'infini cosmique. On dit que je guide les âmes perdues vers la lumière. Qui suis-je ?'",
+      "recap_text": "La 'Nébuleuse' vous pose une énigme concernant une étoile lointaine.",
       "choice": [
         {
           "text": "L'étoile du Nord",
@@ -219,36 +240,42 @@
       "id": 23,
       "event_type": "story",
       "text": "L'étoile du Nord : 'Oui, vous avez trouvé la voie des étoiles, un phare dans la vaste obscurité. Votre choix est juste.'",
+      "recap_text": "Vous répondez correctement à l'énigme de la 'Nébuleuse' en disant 'L'étoile du Nord'.",
       "next_event_id": 26
     },
     {
       "id": 24,
       "event_type": "story",
       "text": "La connaissance universelle : 'Vous percevez la profondeur de l'univers. La connaissance est en effet une lumière qui éclaire le chemin des âmes perdues. Votre choix est juste.'",
+      "recap_text": "Vous répondez correctement à l'énigme de la 'Nébuleuse' en disant 'La connaissance universelle'.",
       "next_event_id": 26
     },
     {
       "id": 25,
       "event_type": "story",
       "text": "L'espoir : 'Vous avez trouvé la lumière intérieure qui guide et console. L'espoir est une étoile lointaine qui brille dans l'infini cosmique. Votre choix est juste.'",
+      "recap_text": "Vous répondez correctement à l'énigme de la 'Nébuleuse' en disant 'L'espoir'.",
       "next_event_id": 26
     },
     {
       "id": 26,
       "event_type": "story",
       "text": "Tu as donc réussi à résoudre l'énigme de la 'Nébuleuse'. Tu peux donc continuer ton chemin jusqu'au cratère du 'Star Foundation'.",
+      "recap_text": "Vous réussissez à résoudre l'énigme de la 'Nébuleuse' et pouvez continuer jusqu'au cratère du 'Star Foundation'.",
       "next_event_id": 27
     },
     {
       "id": 27,
       "event_type": "story",
       "text": "Vous arrivez devant votre vaisseau, prêt à reprendre le contrôle. Cependant, quelque chose vous surprend lorsque vous ouvrez la porte.\nVotre équipage est bien là, mais il semble différent...",
+      "recap_text": "Vous atteignez votre vaisseau et découvrez que votre équipage semble différent.",
       "next_event_id": 28
     },
     {
       "id": 28,
       "event_type": "dice_game",
       "text": "À peine avez-vous eu le temps de comprendre qu'il s'agissait d'un imposteur ayant pris la place de votre équipage que vous vous faites attaquer.",
+      "recap_text": "Vous découvrez un imposteur dans votre équipage et êtes attaqué.",
       "choice": [
         {
           "text": "Riposter",
@@ -282,18 +309,20 @@
     {
       "id": 32,
       "event_type": "end_game",
-      "text": "Après de nombreuses heures de tortures, vous finissez par succomber.\nMalgré tout, vous avez pu retrouver votre vaisseau et êtes mort à ses côtés. Comme un vrai pirate galactique."
+      "text": "Après de nombreuses heures de tortures, vous finissez par succomber.\nMalgré tout, vous avez pu retrouver votre vaisseau et êtes mort à ses côtés. Comme un vrai pirate galactique.",
+      "recap_text": "Vous succombez après de nombreuses heures de torture malgré vos efforts pour récupérer votre vaisseau."
     },
     {
       "id": 31,
       "event_type": "reward",
-      "text": "Vous avez réussi à battre une vague d'ennemis. Plus que quelques-uns et votre vaisseau sera de nouveau à vous.",
+      "recap_text": "Vous réussissez à battre une vague d'ennemis. Plus que quelques-uns et votre vaisseau sera de nouveau à vous.",
       "next_event_id": 33
     },
     {
       "id": 33,
       "event_type": "dice_game",
       "text": "Vous voilà à nouveau face à des ennemis.",
+      "recap_text": "Vous êtes à nouveau confronté à des ennemis.",
       "choice": [
         {
           "text": "Attaquer",
@@ -316,28 +345,14 @@
     {
       "id": 34,
       "event_type": "reward",
+      "recap_text": "Vous réussissez à battre tous les ennemis !!! Votre vaisseau est de nouveau à vous.\n'Vous allez ouvrir la porte du frigo.'\nVos beignets intergalactiques sont intacts, et le soulagement vous submerge.",
       "next_event_id": 35
     },
     {
       "id": 35,
-      "event_type": "story",
-      "text": "Vous avez réussi à battre tous les ennemis !!! Votre vaisseau est de nouveau à vous.\n'Vous allez ouvrir la porte du frigo.'\nVos beignets intergalactiques sont toujours là !\nMaintenant, allons retrouver ton équipage.",
-      "next_event_id": 36
-    },
-    {
-      "id": 36,
       "event_type": "end_game",
-      "text": "C'est faux, tu n'iras jamais chercher ton équipage. Tu mangeras tous tes beignets et finiras par retourner au bar du coin où tu boiras 'quelques' bières."
-    },
-    {
-      "id": 98,
-      "event_type": "reward",
-      "next_event_id": 14
-    },
-    {
-      "id": 99,
-      "event_type": "reward",
-      "next_event_id": 18
+      "text": "Vous avez réussi à reprendre votre vaisseau et retrouver vos beignets intergalactiques. Vous êtes prêt pour de nouvelles aventures dans la galaxie !",
+      "recap_text": "Vous réussissez à récupérer votre vaisseau et vos beignets intergalactiques, prêt pour de nouvelles aventures."
     }
   ]
 }
