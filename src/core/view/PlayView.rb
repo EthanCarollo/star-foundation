@@ -37,7 +37,7 @@ class PlayView < View
 
   def go_next_event(id_event)
     # Add the actual event to history if it exists
-    if @actual_event != nil
+    if @actual_event != nil && @actual_event.event_id != nil
       @history_events.push(@actual_event)
     end
     # And go next event in that way
@@ -65,6 +65,7 @@ class PlayView < View
   end
 
   def go_dice_event(dice_information)
+    @history_events.push(@actual_event)
     @actual_event = DiceEvent.new(dice_information)
   end
 

@@ -15,7 +15,6 @@ class DiceEvent < Event
     @val_needed = dice_selected["dice_needed"]
     @loose_event_id = dice_selected["lose_event_id"]
     @win_event_id = dice_selected["next_event_id"]
-
     event_name = dice_selected["long_text"]
     super(event_name, nil)
   end

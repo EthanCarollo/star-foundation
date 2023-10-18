@@ -88,7 +88,7 @@ class DataManager
         return event
       end
     end
-    raise("There is no event with id : " + id)
+    raise("There is no event with id : " + id.to_s)
   end
 
   def self.save_md
@@ -148,6 +148,7 @@ Mais malheureusement, c'est terminé...
     doc = Nokogiri::XML(File.open('./resources/player_save_data.xml'))
     play_view.go_next_event(doc.at('events/current_event')["id"].to_i)
     load_player_stats(doc)
+    load_history(doc)
   end
 
   def self.load_player_stats(doc)
@@ -155,8 +156,12 @@ Mais malheureusement, c'est terminé...
 
     # Set every variables possible in the player stats
     stats.each do |stat|
-      Game.instance.play_view.player.stats.instance_variable_set("@#{stat.at('name').content}", stat.at('value').content)
+      Game.instance.play_view.player.stats.instance_variable_set("@#{stat.at('name').content}", stat.at('value').content.to_i)
     end
+  end
+
+  def self.load_history(doc)
+    stats = doc.css("stats/stat")
   end
 
   # ============ Region 3: Get Functions ============
