@@ -8,6 +8,7 @@ require "./src/core/event/ChoiceEvent.rb"
 require "./src/core/event/StoryEvent.rb"
 require "./src/core/event/dice_event/DiceChoiceEvent.rb"
 require "./src/core/event/dice_event/DiceEvent.rb"
+require "./src/core/event/EndEvent.rb"
 require "./src/core/data/DataManager.rb"
 
 class PlayView < View
@@ -57,6 +58,8 @@ class PlayView < View
       @event_obj_to_return = CharacterStatsEvent.new(@event["text"], @event)
     when "dice_game"
       @event_obj_to_return = DiceChoiceEvent.new(@event["text"], @event)
+    when "end_game"
+      @event_obj_to_return = EndEvent.new(@event["text"], @event)
     end
     return @event_obj_to_return
   end
@@ -67,5 +70,9 @@ class PlayView < View
 
   def history_events
     @history_events
+  end
+
+  def end_game
+    # End game logics
   end
 end
