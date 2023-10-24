@@ -12,16 +12,23 @@ class MenuEvent < ChoiceEvent
       Option.new(
         "Commencer le jeu",
         lambda { || Game.instance.load_game_view }
-      ),
-      Option.new(
-        "Reprendre le jeu",
-        lambda { || Game.instance.load_save_game }
-      ),
+      )
+    ]
+    # If there is a save, then show the load save button
+    if File.file?('./resources/player_save_data.xml') == true
+      @options.push(
+        Option.new(
+          "Reprendre le jeu",
+          lambda { || Game.instance.load_save_game }
+        )
+      )
+    end
+    @options.push(
       Option.new(
         "Quitter le jeu",
         lambda { || Game.instance.quit_game }
       )
-    ]
+    )
     @selected = 0
   end
 
