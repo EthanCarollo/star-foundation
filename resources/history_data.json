@@ -308,9 +308,10 @@
     },
     {
       "id": 32,
-      "event_type": "end_game",
+      "event_type": "story",
       "text": "Après de nombreuses heures de tortures, vous finissez par succomber.\nMalgré tout, vous avez pu retrouver votre vaisseau et êtes mort à ses côtés. Comme un vrai pirate galactique.",
-      "recap_text": "Vous succombez après de nombreuses heures de torture malgré vos efforts pour récupérer votre vaisseau."
+      "recap_text": "Vous succombez après de nombreuses heures de torture malgré vos efforts pour récupérer votre vaisseau.",
+      "next_event_id": 37
     },
     {
       "id": 31,
@@ -356,9 +357,15 @@
     },
     {
       "id": 36,
-      "event_type": "end_game",
+      "event_type": "story",
       "text": "C'est faux, tu n'iras jamais chercher ton équipage. Tu mangeras tous tes beignets et finiras par retourner au bar du coin où tu boiras 'quelques' bières.",
-      "recap_text": "C'est faux, tu n'iras jamais chercher ton équipage. Tu mangeras tous tes beignets et finiras par retourner au bar du coin où tu boiras 'quelques' bières."
+      "recap_text": "C'est faux, tu n'iras jamais chercher ton équipage. Tu mangeras tous tes beignets et finiras par retourner au bar du coin où tu boiras 'quelques' bières.",
+      "next_event_id": 37
+    },
+    {
+      "id": 37,
+      "event_type": "end_game",
+      "text": "L'histoire est terminée, appuyer sur 'Entré' pour revenir au menu principal."
     },
     {
       "id": 98,
