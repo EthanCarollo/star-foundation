@@ -18,6 +18,15 @@ class PlayerStats
     self.instance_variable_get("@#{ability_identifier}")
   end
 
+  def incr_stat(ability_identifier, value)
+    if self.instance_variable_get("@#{ability_identifier}")
+      self.instance_variable_set("@#{ability_identifier}",
+                                 self.instance_variable_get("@#{ability_identifier}") + value)
+    else
+      raise("The value #{ability_identifier} doesn't exist in the player stats or isn't instanced")
+    end
+  end
+
   def set_stat(ability_identifier, value)
     if self.instance_variable_get("@#{ability_identifier}")
       self.instance_variable_set("@#{ability_identifier}", value)

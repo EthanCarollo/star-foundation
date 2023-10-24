@@ -3,12 +3,13 @@ require "./src/core/view/View.rb"
 require "./src/core/Game.rb"
 require "./src/core/player/Player.rb"
 require "./src/core/displayer/Displayer.rb"
-require "./src/core/event/character_event/CharacterStatsEvent.rb"
 require "./src/core/event/ChoiceEvent.rb"
 require "./src/core/event/StoryEvent.rb"
+require "./src/core/event/EndEvent.rb"
+require "./src/core/event/reward_event/RewardEvent.rb"
 require "./src/core/event/dice_event/DiceChoiceEvent.rb"
 require "./src/core/event/dice_event/DiceEvent.rb"
-require "./src/core/event/EndEvent.rb"
+require "./src/core/event/character_event/CharacterStatsEvent.rb"
 require "./src/core/data/DataManager.rb"
 
 class PlayView < View
@@ -54,6 +55,8 @@ class PlayView < View
       @event_obj_to_return = StoryEvent.new(@event["text"], @event)
     when "choice"
       @event_obj_to_return = ChoiceEvent.new(@event["text"], @event)
+    when "reward"
+      @event_obj_to_return = RewardEvent.new(@event["text"], @event)
     when "story_stats_personalisation"
       @event_obj_to_return = CharacterStatsEvent.new(@event["text"], @event)
     when "dice_game"

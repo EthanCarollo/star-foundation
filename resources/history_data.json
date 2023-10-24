@@ -132,7 +132,7 @@
           "text": "'L’attaquer'",
           "long_text": "Vous avez décidé de vous battre contre 'l'Aqualithe Brillante'.",
           "ability_needed": "force",
-          "dice_needed": 5,
+          "dice_needed": 0,
           "next_event_id": 98,
           "lose_event_id": 12
         },
