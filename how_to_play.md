@@ -2,7 +2,7 @@
 
 <p align="center">Star Foundation</p>
 
-![Image](./images/star_foundation_logo.png)
+![Image](assets/logo/star_foundation_logo.png)
 
 ## Simple Instruction
 
