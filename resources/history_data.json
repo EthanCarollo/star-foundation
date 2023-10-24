@@ -140,7 +140,7 @@
           "text": "Fuir",
           "long_text": "Vous avez décidé de fuir 'l'Aqualithe Brillante'.",
           "ability_needed": "chance",
-          "dice_needed": 9,
+          "dice_needed": 2,
           "next_event_id": 13,
           "lose_event_id": 12
         }
@@ -178,16 +178,18 @@
           "text": "Accepter (Une offre comme celle-ci ne se refuse pas)",
           "ability_needed": "chance",
           "dice_needed": 12,
-          "next_event_id": 99,
+          "next_event_id": 18,
           "lose_event_id": 19
         }
       ]
     },
     {
       "id": 18,
-      "event_type": "story",
-      "text": "Quelle chance, tu as gagné ! Et en plus tu vois tes compétences augmenter de 25%",
-      "recap_text": "Vous gagnez le jeu et vos compétences augmentent de 25%.",
+      "event_type": "reward",
+      "text": "Quelle chance, tu as gagné ! Et en plus tu vois ta chance augmenter de 2.",
+      "recap_text": "Vous gagnez le jeu et votre chance augmante de 2.",
+      "ability": "chance",
+      "gain": 2,
       "next_event_id": 20
     },
     {
@@ -298,7 +300,11 @@
     {
       "id": 29,
       "event_type": "reward",
-      "next_event_id": 31
+      "text": "Vous réussissez à battre une vague d'ennemis. Plus que quelques-uns et votre vaisseau sera de nouveau à vous.\nVotre agilité augmente de 1.",
+      "recap_text": "Vous réussissez à battre une vague d'ennemis. Plus que quelques-uns et votre vaisseau sera de nouveau à vous.(Votre agilité augmente de 1.)",
+      "ability": "agilite",
+      "gain": 1,
+      "next_event_id": 33
     },
     {
       "id": 30,
@@ -314,12 +320,6 @@
       "next_event_id": 37
     },
     {
-      "id": 31,
-      "event_type": "reward",
-      "recap_text": "Vous réussissez à battre une vague d'ennemis. Plus que quelques-uns et votre vaisseau sera de nouveau à vous.",
-      "next_event_id": 33
-    },
-    {
       "id": 33,
       "event_type": "dice_game",
       "text": "Vous voilà à nouveau face à des ennemis.",
@@ -330,7 +330,7 @@
           "long_text": "Vous avez décidé d'attaquer les ennemis restants avec votre meilleur coup.",
           "ability_needed": "force",
           "dice_needed": 1,
-          "next_event_id": 34,
+          "next_event_id": 35,
           "lose_event_id": 30
         },
         {
@@ -338,15 +338,10 @@
           "long_text": "Vous avez décidé de tenter une nouvelle attaque, celle-ci nécessite de la force.",
           "ability_needed": "force",
           "dice_needed": 2,
-          "next_event_id": 34,
+          "next_event_id": 35,
           "lose_event_id": 30
         }
       ]
-    },
-    {
-      "id": 34,
-      "event_type": "reward",
-      "next_event_id": 35
     },
     {
       "id": 35,
@@ -370,12 +365,11 @@
     {
       "id": 98,
       "event_type": "reward",
+      "text": "Vous avez battu 'l'Aqualithe Brillante'.\n Votre force aumgente de 2.",
+      "recap_text": "Vous avez battu 'l'Aqualithe Brillante'.(Votre force aumgente de 2.)",
+      "ability": "force",
+      "gain": 2,
       "next_event_id": 14
-    },
-    {
-      "id": 99,
-      "event_type": "reward",
-      "next_event_id": 18
     }
   ]
 }
