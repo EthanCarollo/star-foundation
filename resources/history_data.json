@@ -345,14 +345,30 @@
     {
       "id": 34,
       "event_type": "reward",
-      "recap_text": "Vous réussissez à battre tous les ennemis !!! Votre vaisseau est de nouveau à vous.\n'Vous allez ouvrir la porte du frigo.'\nVos beignets intergalactiques sont intacts, et le soulagement vous submerge.",
       "next_event_id": 35
     },
     {
       "id": 35,
+      "event_type": "story",
+      "text": "Vous avez réussi à battre tous les ennemis !!! Votre vaisseau est de nouveau à vous.\n'Vous allez ouvrir la porte du frigo.'\nVos beignets intergalactiques sont toujours là !\nMaintenant, allons retrouver ton équipage.",
+      "recap_text": "Vous réussissez à battre tous les ennemis !!! Votre vaisseau est de nouveau à vous.\n'Vous allez ouvrir la porte du frigo.'\nVos beignets intergalactiques sont intacts, et le soulagement vous submerge.",
+      "next_event_id": 36
+    },
+    {
+      "id": 36,
       "event_type": "end_game",
-      "text": "Vous avez réussi à reprendre votre vaisseau et retrouver vos beignets intergalactiques. Vous êtes prêt pour de nouvelles aventures dans la galaxie !",
-      "recap_text": "Vous réussissez à récupérer votre vaisseau et vos beignets intergalactiques, prêt pour de nouvelles aventures."
+      "text": "C'est faux, tu n'iras jamais chercher ton équipage. Tu mangeras tous tes beignets et finiras par retourner au bar du coin où tu boiras 'quelques' bières.",
+      "recap_text": "C'est faux, tu n'iras jamais chercher ton équipage. Tu mangeras tous tes beignets et finiras par retourner au bar du coin où tu boiras 'quelques' bières."
+    },
+    {
+      "id": 98,
+      "event_type": "reward",
+      "next_event_id": 14
+    },
+    {
+      "id": 99,
+      "event_type": "reward",
+      "next_event_id": 18
     }
   ]
 }
