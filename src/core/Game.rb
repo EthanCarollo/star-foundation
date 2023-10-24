@@ -64,6 +64,11 @@ class Game
     @actual_view = @play_view
   end
 
+  def load_menu_view
+    DataManager.reset_save
+    @actual_view = @menu_view
+  end
+
   def load_save_game
     @play_view.initialize_save
     @actual_view = @play_view

@@ -57,3 +57,7 @@ build-iPhoneSimulator/
 .DS_Store
 .idea
 dump.rdb
+
+# Remove data ahah
+./resources/output.md
+./resources/player_save_data.xml

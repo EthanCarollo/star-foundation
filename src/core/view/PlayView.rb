@@ -74,6 +74,7 @@ class PlayView < View
   end
 
   def end_game
+    Game.instance.load_menu_view
     # End game logics
   end
 end

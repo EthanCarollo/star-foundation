@@ -82,33 +82,10 @@ class DataManager
     return new_event
   end
 
-  def self.get_event_by_id(id)
-    @@event_data.each do |event|
-      if event["id"] == id
-        return event
-      end
-    end
-    raise("There is no event with id : " + id.to_s)
-  end
-
   def self.save_md
     File.open('resources/output.md', 'w') do |file|
       file.write(get_md)
     end
-  end
-
-  def self.get_md
-    markdown = ""
-    markdown_introduction = <<-MARKDOWN
-# C'était une belle aventure n'est ce pas ?
-    
-Mais malheureusement, c'est terminé...
-    MARKDOWN
-    markdown += markdown_introduction
-    markdown += get_stats_from_xml_to_md
-    markdown += get_history_from_xml_to_md
-
-    return markdown
   end
 
   def self.get_stats_from_xml_to_md()
@@ -135,7 +112,7 @@ Mais malheureusement, c'est terminé...
     hist_data = Game.instance.play_view.history_events
     hist_data.each do |event|
       md_content += <<-MARKDOWN
-#### #{get_event_by_id(event.event_id)["text"]}
+#### #{get_event_by_id(event.event_id)["recap_text"]}
     MARKDOWN
     end
     return md_content
@@ -171,5 +148,44 @@ Mais malheureusement, c'est terminé...
 
   # ============ Region 3: Get Functions ============
   # These are events functions who load the state of the game from "player_save_data.xml"
+
+
+  def self.get_event_by_id(id)
+    @@event_data.each do |event|
+      if event["id"] == id
+        return event
+      end
+    end
+    raise("There is no event with id : " + id.to_s)
+  end
+
+  def self.get_md
+    if File.file?('./resources/player_save_data.xml') == false
+      return
+    end
+
+    markdown = ""
+    markdown_introduction = <<-MARKDOWN
+# C'était une belle aventure n'est ce pas ?
+    
+Mais malheureusement, c'est terminé...
+    MARKDOWN
+    markdown += markdown_introduction
+    markdown += get_stats_from_xml_to_md
+    markdown += get_history_from_xml_to_md
+
+    return markdown
+  end
+
+
+  # ============ Region 4: Reset Functions ============
+  #
+
+  def self.reset_save
+    Game.instance.play_view.history_events = []
+    File.open('./resources/player_save_data.xml', 'r') do |f|
+      File.delete(f)
+    end
+  end
 
 end
