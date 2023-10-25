@@ -22,7 +22,7 @@ class Displayer
     # The pair 1 is for something that is agressive
     Curses.init_pair(@color_red, Curses::COLOR_RED, Curses::COLOR_BLACK)
     # The pair 2 is for the selected text
-    Curses.init_pair(@color_white, 248, Curses::COLOR_BLACK)
+    Curses.init_pair(@color_white, Curses::COLOR_WHITE, Curses::COLOR_BLACK)
   end
 
 

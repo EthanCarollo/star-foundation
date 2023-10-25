@@ -35,3 +35,15 @@ bundler install
 ```
 ruby main.rb
 ```
+
+**_Build the game with Docker_**
+
+```
+docker build -t star-foundation .
+```
+
+**_Run the game with Docker_**
+
+```
+docker run -it star-foundation
+```
