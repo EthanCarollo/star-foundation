@@ -10,6 +10,10 @@ class MenuView < View
     @menu_event = MenuEvent.new("Menu principal")
   end
 
+  def reload_menu
+    @menu_event = MenuEvent.new("Menu principal")
+  end
+
   def update
     @menu_event.update
   end

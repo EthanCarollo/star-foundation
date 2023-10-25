@@ -120,7 +120,7 @@ class Displayer
       end
 
       # If the actual string in the array is superior to the width of the Window, then, we create another
-      if (potential_word.length + new_texts[new_texts.length - 1].length) > Curses.cols
+      if (potential_word.length + new_texts[new_texts.length - 1].length) > (Curses.cols-2)
         new_texts[new_texts.length - 1].slice!(-1)
         new_texts.push("")
       end

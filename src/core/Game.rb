@@ -66,6 +66,7 @@ class Game
 
   def load_menu_view
     DataManager.reset_save
+    menu_view.reload_menu
     @actual_view = @menu_view
   end
 
