@@ -132,7 +132,7 @@
           "text": "'L’attaquer'",
           "long_text": "Vous avez décidé de vous battre contre 'l'Aqualithe Brillante'.",
           "ability_needed": "force",
-          "dice_needed": 0,
+          "dice_needed": 2,
           "next_event_id": 98,
           "lose_event_id": 12
         },
@@ -140,7 +140,7 @@
           "text": "Fuir",
           "long_text": "Vous avez décidé de fuir 'l'Aqualithe Brillante'.",
           "ability_needed": "chance",
-          "dice_needed": 2,
+          "dice_needed": 4,
           "next_event_id": 13,
           "lose_event_id": 12
         }
@@ -177,7 +177,7 @@
           "long_text": "Vous avez de votre plein gré décidé d'accepter l'offre du marchand et de participer au jeu.",
           "text": "Accepter (Une offre comme celle-ci ne se refuse pas)",
           "ability_needed": "chance",
-          "dice_needed": 12,
+          "dice_needed": 5,
           "next_event_id": 18,
           "lose_event_id": 19
         }
@@ -283,7 +283,7 @@
           "text": "Riposter",
           "long_text": "Vous avez décidé de riposter face à l'attaque de votre 'équipage'.",
           "ability_needed": "agilite",
-          "dice_needed": 7,
+          "dice_needed": 3,
           "next_event_id": 29,
           "lose_event_id": 30
         },
@@ -291,7 +291,7 @@
           "text": "Essayer une nouvelle attaque",
           "long_text": "Vous avez décidé de tenter une nouvelle attaque, celle-ci nécessite de l'agilité.",
           "ability_needed": "agilite",
-          "dice_needed": 10,
+          "dice_needed": 1,
           "next_event_id": 29,
           "lose_event_id": 30
         }
@@ -359,6 +359,12 @@
     },
     {
       "id": 37,
+      "event_type": "story",
+      "text": "Fin",
+      "next_event_id": 38
+    },
+    {
+      "id": 38,
       "event_type": "end_game",
       "text": "L'histoire est terminée, appuyer sur 'Entré' pour revenir au menu principal."
     },
