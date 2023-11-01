@@ -42,8 +42,8 @@ ruby main.rb
 docker build -t star-foundation .
 ```
 
-**_Run the game with Docker_**
+**_Run the game with Docker_** (!! If you leave the game with this command, it will just erase the docker container)
 
 ```
-docker run -it star-foundation
+docker run -it --rm star-foundation
 ```

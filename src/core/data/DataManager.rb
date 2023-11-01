@@ -22,6 +22,7 @@ class DataManager
     @@event_data = json["events"]
   end
 
+
   # ============ Region 1: Save Functions ============
   # These are events functions who save the actual state of the game
 
@@ -88,36 +89,6 @@ class DataManager
     end
   end
 
-  def self.get_stats_from_xml_to_md()
-    doc = Nokogiri::XML(File.open('./resources/player_save_data.xml'))
-    stats = doc.css("stats/stat")
-    md_content = <<-MARKDOWN
-## Vous aviez des superbes statistiques hein ! 
-    MARKDOWN
-    # Go in every stat of the save and save them from the player stats
-    stats.each do |stat|
-      md_content += <<-MARKDOWN
-#### #{stat.at('name').content} : #{stat.at('value').content}
-    MARKDOWN
-    end
-    return md_content
-  end
-
-  def self.get_history_from_xml_to_md()
-    doc = Nokogiri::XML(File.open('./resources/save_data.xml'))
-    md_content = <<-MARKDOWN
-## Et vous avez eu une sacrée aventure...
-    MARKDOWN
-
-    hist_data = Game.instance.play_view.history_events
-    hist_data.each do |event|
-      md_content += <<-MARKDOWN
-#### #{get_event_by_id(event.event_id)["recap_text"]}
-    MARKDOWN
-    end
-    return md_content
-  end
-
   # ============ Region 2: Load Functions ============
   # These are events functions who load the state of the game from "player_save_data.xml"
 
@@ -177,6 +148,35 @@ Mais malheureusement, c'est terminé...
     return markdown
   end
 
+  def self.get_stats_from_xml_to_md()
+    doc = Nokogiri::XML(File.open('./resources/player_save_data.xml'))
+    stats = doc.css("stats/stat")
+    md_content = <<-MARKDOWN
+## Vous aviez des superbes statistiques hein ! 
+    MARKDOWN
+    # Go in every stat of the save and save them from the player stats
+    stats.each do |stat|
+      md_content += <<-MARKDOWN
+#### #{stat.at('name').content} : #{stat.at('value').content}
+    MARKDOWN
+    end
+    return md_content
+  end
+
+  def self.get_history_from_xml_to_md()
+    doc = Nokogiri::XML(File.open('./resources/save_data.xml'))
+    md_content = <<-MARKDOWN
+## Et vous avez eu une sacrée aventure...
+    MARKDOWN
+
+    hist_data = Game.instance.play_view.history_events
+    hist_data.each do |event|
+      md_content += <<-MARKDOWN
+#### #{get_event_by_id(event.event_id)["recap_text"]}
+    MARKDOWN
+    end
+    return md_content
+  end
 
   # ============ Region 4: Reset Functions ============
   #
