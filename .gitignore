@@ -61,3 +61,4 @@ dump.rdb
 # Remove data ahah
 ./resources/output.md
 ./resources/player_save_data.xml
+./game/game_recap.md

@@ -347,7 +347,7 @@
       "id": 35,
       "event_type": "story",
       "text": "Vous avez réussi à battre tous les ennemis !!! Votre vaisseau est de nouveau à vous.\n'Vous allez ouvrir la porte du frigo.'\nVos beignets intergalactiques sont toujours là !\nMaintenant, allons retrouver ton équipage.",
-      "recap_text": "Vous réussissez à battre tous les ennemis !!! Votre vaisseau est de nouveau à vous.\n'Vous allez ouvrir la porte du frigo.'\nVos beignets intergalactiques sont intacts, et le soulagement vous submerge.",
+      "recap_text": "Vous réussissez à battre tous les ennemis !!! Votre vaisseau est de nouveau à vous et vos beignets intergalactiques sont intacts, et le soulagement vous submerge.",
       "next_event_id": 36
     },
     {
@@ -360,7 +360,7 @@
     {
       "id": 37,
       "event_type": "story",
-      "text": "Fin",
+      "text": "Fin, tu retrouveras le récapitulatif de ton histoire dans le dossier game.",
       "next_event_id": 38
     },
     {

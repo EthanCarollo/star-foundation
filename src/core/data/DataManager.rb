@@ -84,7 +84,7 @@ class DataManager
   end
 
   def self.save_md
-    File.open('resources/output.md', 'w') do |file|
+    File.open('game/game_recap.md', 'w') do |file|
       file.write(get_md)
     end
   end
