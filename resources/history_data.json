@@ -307,8 +307,8 @@
         {
           "text": "Essayer une nouvelle attaque",
           "long_text": "Vous avez décidé de tenter une nouvelle attaque, celle-ci nécessite de l'agilité.",
-          "ability_needed": "agilite",
-          "dice_needed": 1,
+          "ability_needed": "chance",
+          "dice_needed": 5,
           "next_event_id": 29,
           "lose_event_id": 30
         }
@@ -362,8 +362,8 @@
         {
           "text": "Essayer une nouvelle attaque",
           "long_text": "Vous avez décidé de tenter une nouvelle attaque, celle-ci nécessite de la force.",
-          "ability_needed": "force",
-          "dice_needed": 2,
+          "ability_needed": "chance",
+          "dice_needed": 3,
           "next_event_id": 35,
           "lose_event_id": 30
         }
