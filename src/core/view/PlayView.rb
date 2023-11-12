@@ -6,7 +6,9 @@ require "./src/core/displayer/Displayer.rb"
 require "./src/core/event/ChoiceEvent.rb"
 require "./src/core/event/StoryEvent.rb"
 require "./src/core/event/EndEvent.rb"
-require "./src/core/event/reward_event/RewardEvent.rb"
+require "./src/core/event/reward_event/StatsRewardEvent.rb"
+require "./src/core/event/reward_event/ItemRewardEvent.rb"
+require "./src/core/event/item_event/ItemStoryEvent.rb"
 require "./src/core/event/dice_event/DiceChoiceEvent.rb"
 require "./src/core/event/dice_event/DiceEvent.rb"
 require "./src/core/event/character_event/CharacterStatsEvent.rb"
@@ -36,13 +38,16 @@ class PlayView < View
     @actual_event.update
   end
 
-  def go_next_event(id_event)
+  def go_next_event(id_event, in_history = true)
+
     # Add the actual event to history if it exists
-    if @actual_event != nil && @actual_event.event_id != nil
+    if @actual_event != nil && @actual_event.event_id != nil && in_history == true
       @history_events.push(@actual_event)
     end
+
     # And go next event in that way
     @actual_event = get_event(id_event)
+
     # Go next event logic here
     DataManager.save_game_data
   end
@@ -55,8 +60,12 @@ class PlayView < View
       @event_obj_to_return = StoryEvent.new(@event["text"], @event)
     when "choice"
       @event_obj_to_return = ChoiceEvent.new(@event["text"], @event)
-    when "reward"
-      @event_obj_to_return = RewardEvent.new(@event["text"], @event)
+    when "item_story"
+      @event_obj_to_return = ItemStoryEvent.new(@event["text"], @event)
+    when "reward_ability"
+      @event_obj_to_return = StatsRewardEvent.new(@event["text"], @event)
+    when "reward_item"
+      @event_obj_to_return = ItemRewardEvent.new(@event["text"], @event)
     when "story_stats_personalisation"
       @event_obj_to_return = CharacterStatsEvent.new(@event["text"], @event)
     when "dice_game"

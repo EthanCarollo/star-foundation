@@ -6,20 +6,32 @@ class DataManager
 
   # Data from the game
   @@event_data
+  @@item_data
 
   def self.event_data
     @@event_data
   end
 
+  def self.item_data
+    @@item_data
+  end
+
   # On create, load the event data
   def self.init_data
     load_event_data
+    load_item_data
   end
 
   def self.load_event_data
     file = File.open "./resources/history_data.json"
     json = JSON.load file
     @@event_data = json["events"]
+  end
+
+  def self.load_item_data
+    file = File.open "./resources/items_data.json"
+    json = JSON.load file
+    @@item_data = json["items"]
   end
 
 
@@ -29,6 +41,7 @@ class DataManager
   def self.save_game_data
     doc = Nokogiri::XML(File.open('./resources/save_data.xml'))
     save_player_stats(doc)
+    save_player_items(doc)
     save_history_events(doc)
 
     save_md
@@ -46,6 +59,23 @@ class DataManager
     # Go in every stat of the save and save them from the player stats
     stats.each do |stat|
       stat.at('value').content = Game.instance.play_view.player.stats.get_stat(stat.at('name').content)
+    end
+  end
+
+  def self.save_player_items(doc)
+    # The player save item function
+    items_xml = doc.at("items")
+
+    items = Game.instance.play_view.player.items
+    for i in 0..items.length
+      item = items[i]
+      if item == nil
+        next
+      end
+      new_item_xml = Nokogiri::XML::Node.new('item', doc)
+      new_item_xml.set_attribute("id", item)
+      items_xml << new_item_xml
+
     end
   end
 
@@ -96,6 +126,7 @@ class DataManager
     doc = Nokogiri::XML(File.open('./resources/player_save_data.xml'))
     load_player_stats(doc)
     load_history(doc)
+    load_items(doc)
     play_view.go_next_event(doc.at('events/current_event')["id"].to_i)
   end
 
@@ -117,6 +148,15 @@ class DataManager
     end
   end
 
+  def self.load_items(doc)
+    items = doc.css("items/item")
+
+    # Add every items in the player items array
+    items.each do |item|
+      Game.instance.play_view.player.items.push(item["id"].to_i)
+    end
+  end
+
   # ============ Region 3: Get Functions ============
   # These are events functions who load the state of the game from "player_save_data.xml"
 
@@ -128,6 +168,15 @@ class DataManager
       end
     end
     raise("There is no event with id : " + id.to_s)
+  end
+
+  def self.get_item_by_id(id)
+    @@item_data.each do |item|
+      if item["id"] == id
+        return item
+      end
+    end
+    raise("There is no item with id : " + id.to_s)
   end
 
   def self.get_md
@@ -143,9 +192,28 @@ Mais malheureusement, c'est terminé...
     MARKDOWN
     markdown += markdown_introduction
     markdown += get_stats_from_xml_to_md
+    markdown += get_items_from_xml_to_md
     markdown += get_history_from_xml_to_md
 
     return markdown
+  end
+
+  def self.get_items_from_xml_to_md()
+    doc = Nokogiri::XML(File.open('./resources/player_save_data.xml'))
+    md_content = ""
+    items = doc.css("items/item")
+    if items.length > 0
+      md_content = <<-MARKDOWN
+## Vous aviez 2-3 items en rab aussi !
+    MARKDOWN
+      items.each do |item|
+        md_content += <<-MARKDOWN
+#### #{get_item_by_id(item["id"].to_i)["name"]}
+    MARKDOWN
+      end
+    end
+
+    return md_content
   end
 
   def self.get_stats_from_xml_to_md()

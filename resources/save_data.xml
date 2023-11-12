@@ -19,6 +19,7 @@
             </stat>
         </stats>
     </character>
+    <items></items>
     <events>
         <current_event id="0"></current_event>
         <events_history></events_history>
