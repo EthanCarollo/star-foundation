@@ -218,8 +218,8 @@
     {
       "id": 21,
       "event_type": "choice",
-      "text": "Au bout de quelques minutes de marche, tu aperçois au loin une 'Nébuleuse'. Cette dernière te bloque la route. Elle t'informe que pour passer, tu devras résoudre ses énigmes. Es-tu prêt ?",
-      "recap_text": "Vous approchez d'une 'Nébuleuse' qui bloque votre route et qui vous propose de résoudre des énigmes pour passer.",
+      "text": "Au bout de quelques minutes de marche, tu aperçois au loin une 'Nébuleuse'. Cette dernière te bloque la route. Elle t'informe que pour passer, tu devras résoudre son énigme. Es-tu prêt ?",
+      "recap_text": "Vous approchez d'une 'Nébuleuse' qui bloque votre route et qui vous propose de résoudre une énigme pour passer.",
       "choice": [
         {
           "text": "Oui (En même temps, tu n'as pas trop le choix).",
