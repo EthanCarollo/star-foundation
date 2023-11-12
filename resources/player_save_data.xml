@@ -4,24 +4,24 @@
         <stats>
             <stat>
                 <name>intelligence</name>
-                <value>2</value>
+                <value>0</value>
             </stat>
             <stat>
                 <name>force</name>
-                <value>7</value>
+                <value>0</value>
             </stat>
             <stat>
                 <name>agilite</name>
-                <value>2</value>
+                <value>0</value>
             </stat>
             <stat>
                 <name>chance</name>
-                <value>3</value>
+                <value>0</value>
             </stat>
         </stats>
     </character>
     <events>
-        <current_event id="21"/>
-        <events_history><event><id>0</id></event><event><id>1</id></event><event><id>2</id></event><event><id>3</id></event><event><id>4</id></event><event><id>5</id></event><event><id>9</id></event><event><id>10</id></event><event><id>11</id></event><event><id>98</id></event><event><id>14</id></event><event><id>15</id></event><event><id>18</id></event><event><id>20</id></event></events_history>
+        <current_event id="1"/>
+        <events_history><event><id>0</id></event></events_history>
     </events> 
 </save_data>

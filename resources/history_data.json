@@ -5,7 +5,8 @@
       "event_type": "story",
       "text": "Vous vous réveillez dans un bar, avec devant vous une demi-douzaine de chopes galactiques vides.\nAprès une forte douleur à la tête et un léger vertige (sûrement dû à l'alcool), vous vous rappelez de la raison pour laquelle vous aviez décidé de boire…",
       "recap_text": "Vous vous réveillez dans un bar après avoir consommé plusieurs chopes galactiques.",
-      "next_event_id": 1
+      "next_event_id": 1,
+      "recap_img": "../assets/story/story-event-bar.png"
     },
     {
       "id": 1,

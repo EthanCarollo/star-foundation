@@ -171,6 +171,11 @@ Mais malheureusement, c'est terminé...
 
     hist_data = Game.instance.play_view.history_events
     hist_data.each do |event|
+      if get_event_by_id(event.event_id)["recap_img"] != nil
+        md_content += <<-MARKDOWN
+#### ![event_image](#{get_event_by_id(event.event_id)["recap_img"]})
+    MARKDOWN
+      end
       md_content += <<-MARKDOWN
 #### #{get_event_by_id(event.event_id)["recap_text"]}
     MARKDOWN
