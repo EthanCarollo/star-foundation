@@ -262,6 +262,14 @@
       "next_event_id": 26
     },
     {
+      "id": 666,
+      "event_type": "reward_item",
+      "item_reward" : 1,
+      "text": "Mais cette connaissance vous détruit en permanence, vous héritez donc de l'épée du désarroi.",
+      "recap_text": "Cette même connaissance vous offre l'épée du désarroi, car vous avez l'impression d'être détruit.",
+      "next_event_id": 26
+    },
+    {
       "id": 25,
       "event_type": "story",
       "text": "L'espoir : 'Vous avez trouvé la lumière intérieure qui guide et console. L'espoir est une étoile lointaine qui brille dans l'infini cosmique. Votre choix est juste.'",
@@ -366,13 +374,22 @@
       "event_type": "story",
       "text": "Vous avez réussi à battre tous les ennemis !!! Votre vaisseau est de nouveau à vous.\n'Vous allez ouvrir la porte du frigo.'\nVos beignets intergalactiques sont toujours là !\nMaintenant, allons retrouver ton équipage.",
       "recap_text": "Vous réussissez à battre tous les ennemis !!! Votre vaisseau est de nouveau à vous et vos beignets intergalactiques sont intacts, et le soulagement vous submerge.",
-      "next_event_id": 36
+      "next_event_id": 669
+    },
+    {
+      "id": 669,
+      "event_type": "item_story",
+      "item_needed": 1,
+      "next_event_id": 37,
+      "next_event_id_if_item": 36,
+      "text": "L'épée du désarroi se met à vibrer une fois votre aventure fini, il semblerait que ses tourments n'ait pas finit de vous embêter...",
+      "recap_text": "L'épée du désarroi vous a encore jouer un tourment et vous a plongé dans le noir le plus total à cause de votre soulagement..."
     },
     {
       "id": 36,
       "event_type": "story",
-      "text": "C'est faux, tu n'iras jamais chercher ton équipage. Tu mangeras tous tes beignets et finiras par retourner au bar du coin où tu boiras 'quelques' bières.",
-      "recap_text": "C'est faux, tu n'iras jamais chercher ton équipage. Tu mangeras tous tes beignets et finiras par retourner au bar du coin où tu boiras 'quelques' bières.",
+      "text": "Elle vous plonge dans le noir et vous ne savez plus où vous êtes, vous êtes perdue au milieu des tourments de la connaissance.",
+      "recap_text": "Vous finissez perdu dans le tourment des connaissances, une fin malheureuse pour un si bel homme que vous.",
       "next_event_id": 37
     },
     {
