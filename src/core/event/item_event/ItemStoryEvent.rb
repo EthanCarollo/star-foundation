@@ -29,7 +29,7 @@ class ItemStoryEvent < Event
   end
 
   def skip_story_event
-    for i in 0...Game.instance.play_view.player.items
+    for i in 0...Game.instance.play_view.player.items.length
       item = Game.instance.play_view.player.items[i]
       if i == @item_needed
         Game.instance.play_view.player.items.delete_at(i)

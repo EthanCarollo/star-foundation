@@ -62,3 +62,5 @@ dump.rdb
 ./resources/output.md
 ./resources/player_save_data.xml
 ./game/game_recap.md
+game/game_recap.md
+resources/player_save_data.xml

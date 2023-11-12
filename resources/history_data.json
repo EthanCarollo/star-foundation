@@ -92,7 +92,7 @@
       "item_reward" : 0,
       "text": "Dans votre dernière biere, vous trouvez une petite pièce chanceuse que vous décidez de garder.\n Chanceux ;)",
       "recap_text": "Vous avez trouvé une pièce dans votre dernière bière, puis vous partez à l'aventure.",
-      "next_event_id": 486
+      "next_event_id": 9
     },
     {
       "id": 7,
